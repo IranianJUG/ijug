@@ -3,89 +3,89 @@
 import type BookData from "@/interfaces/BookData";
 
 const bookImages : Array<object>= [ // Array of book images for the slideshow
-  { image: 'assets/images/Java_The_Complete_Reference.jpg' },
+  { image: '/images/Java_The_Complete_Reference.jpg' },
 
-  { image: 'assets/images/core_java.png' },
+  { image: '/images/core_java.png' },
   // Add more book images as needed
 ];
 const bookData : Array<BookData> = [ // Array of book details for the data view
   {
     name: 'Java Complete Reference Twelfth Edition',
-    image: 'assets/images/Java_The_Complete_Reference.jpg',
+    image: '/images/Java_The_Complete_Reference.jpg',
     rate: 4.5,
     downloads: 1000,
-    url:'assets/ebook/Java_The_Complete_Reference.pdf'
+    url:'/ebook/Java_The_Complete_Reference.pdf'
   },
   {
     name: 'Java A Beginners Guid Ninth Edition',
-    image: 'assets/images/A_Beginners_Guide_Ninth_Edition.jpg',
+    image: '/images/A_Beginners_Guide_Ninth_Edition.jpg',
     rate: 4.0,
     downloads: 800,
-    url:'assets/ebook/A_Beginners_Guide_Ninth_Edition.pdf'
+    url:'/ebook/A_Beginners_Guide_Ninth_Edition.pdf'
   },
   {
     name: 'Core Java Volume Fundamentals ',
-    image: 'assets/images/core_java.png',
+    image: '/images/core_java.png',
     rate: 4.0,
     downloads: 800,
-    url:'assets/ebook/compelete_refrence.jpg'
+    url:'/ebook/compelete_refrence.jpg'
   },
   {
     name: 'Java Performance In Depth Advice for Tuning and Programming',
-    image: 'assets/images/Java_Performance_In_Depth_Advice_for_Tuning_and_Programming.png',
+    image: '/images/Java_Performance_In_Depth_Advice_for_Tuning_and_Programming.png',
     rate: 4.0,
     downloads: 800,
-    url:'assets/ebook/Java_Performance_In_Depth_Advice_for_Tuning_and_Programming.pdf'
+    url:'/ebook/Java_Performance_In_Depth_Advice_for_Tuning_and_Programming.pdf'
   },
   {
     name: 'Effective Java',
-    image: 'assets/images/Effective_Java_2018.png',
+    image: '/images/Effective_Java_2018.png',
     rate: 4.0,
     downloads: 800,
-    url:'assets/ebook/Effective_Java_2018.pdf'
+    url:'/ebook/Effective_Java_2018.pdf'
   },
   {
     name: 'Modernizing Enterprise Java',
-    image: 'assets/images/ModerningEnterpriseInJava.jpg',
+    image: '/images/ModerningEnterpriseInJava.jpg',
     rate: 4.0,
     downloads: 800,
-    url:'assets/ebook/compelete_refrence.jpg'
+    url:'/ebook/compelete_refrence.jpg'
   },
   {
     name: 'Supercharge Your Applications with GraalVM',
-    image: 'assets/images/GraalVM.jpg',
+    image: '/images/GraalVM.jpg',
     rate: 4.0,
     downloads: 800,
-    url:'assets/ebook/Java_The_Complete_Reference.jpg'
+    url:'/ebook/Java_The_Complete_Reference.jpg'
   },
   {
     name: 'Reactive System In Java',
-    image: 'assets/images/Reactive_Systems_in_Java_Resilient.jpg',
+    image: '/images/Reactive_Systems_in_Java_Resilient.jpg',
     rate: 4.0,
     downloads: 800,
-    url:'assets/ebook/Reactive_Systems_in_Java_Resilient.pdf'
+    url:'/ebook/Reactive_Systems_in_Java_Resilient.pdf'
   },
   {
     name: 'The Definitive Guide to Jakarta Faces in Jakarta EE 10',
-    image: 'assets/images/The_Definitive_Guide_to_Jakarta_Faces_in_Jakarta_EE_10.png',
+    image: '/images/The_Definitive_Guide_to_Jakarta_Faces_in_Jakarta_EE_10.png',
     rate: 4.0,
     downloads: 800,
-    url:'assets/ebook/The_Definitive_Guide_to_Jakarta_Faces_in_Jakarta_EE_10.pdf'
+    url:'/ebook/The_Definitive_Guide_to_Jakarta_Faces_in_Jakarta_EE_10.pdf'
   },
   {
     name: 'Pro Jakarta Persistence in Jakarta EE 10',
-    image: 'assets/images/Pro_Jakarta_Persistence_in_Jakarta_EE_10.png',
+    image: '/images/Pro_Jakarta_Persistence_in_Jakarta_EE_10.png',
     rate: 4.0,
     downloads: 800,
-    url:'assets/ebook/Pro_Jakarta_Persistence_in_Jakarta_EE_10.pdf'
+    url:'/ebook/Pro_Jakarta_Persistence_in_Jakarta_EE_10.pdf'
   },
 
   {
     name: 'Spring In Action',
-    image: 'assets/images/SpringInAction.png',
+    image: '/images/SpringInAction.png',
     rate: 4.0,
     downloads: 800,
-    url:'assets/ebook/compelete_refrence.jpg'
+    url:'/ebook/compelete_refrence.jpg'
   }
 ]
 </script>
@@ -93,7 +93,7 @@ const bookData : Array<BookData> = [ // Array of book details for the data view
 <template>
   <div class="source">
 
-    <div id="page-banner" style="background-image: url(assets/images/JavaEbook.jpg)">
+    <div id="page-banner" style="background-image: url(/images/JavaEbook.jpg)">
       <div class="content  wow fdeInUp" style="visibility: visible; animation-name: fdeInUp;">
         <div class="container ">
           <h1></h1>
@@ -102,8 +102,8 @@ const bookData : Array<BookData> = [ // Array of book details for the data view
     </div>
     <Divider />
 
-    <div class="card flex items-center justify-center" v-for="(book, index) in bookData" :key="index">
-      <Card style="width: 25em">
+    <div class="card grid items-center justify-center" v-for="(book, index) in bookData" :key="index">
+      <Card class="w-20">
         <template #header>
           <img alt="user header" :src="book.image" />
         </template>

@@ -1,6 +1,8 @@
 <script setup lang="ts">
 import { ref } from "vue";
 
+const localePath = useLocalePath()
+
 const items = ref([
   {
     label:'menu_header',
@@ -35,10 +37,10 @@ const items = ref([
 </script>
 
 <template>
-  <div class="card">
+  <div >
     <Menubar :model="items" >
       <template #item="{ item, props, hasSubmenu }">
-        <NuxtLink v-if="item.route" v-slot="{ href, navigate }" :to="item.route" custom>
+        <NuxtLink v-if="item.route" v-slot="{ href, navigate }" :to="localePath(item.route)" custom>
           <a v-ripple :href="href" v-bind="props.action" @click="navigate">
             <span :class="item.icon" />
             <span class="ml-2">{{$t(item.label) }}</span>

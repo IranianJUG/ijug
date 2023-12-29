@@ -5,25 +5,25 @@ const aboutData : Array<AboutData> = [ //
   {
     title: 'EE4J',
     description: ' ایکلیپس اینترپرایس برای جاوا استاندارد هایی را در بنیاد ایکلیپس بر پایه جاکارتا ee برای پروژه های سطح بالا ایجاد میکند',
-    image: "../assets/images/eclipse.png",
+    image: "/images/eclipse.png",
     url:'http://www.e4j.ir'
   },
   {
     title: 'JakartaEE',
     description: 'Jakarta EE یک جامعه جهانی از توسعه دهندگان، فروشندگان و شرکت های پیشرو را برای همکاری در پیشرفت فناوری جاوا سازمانی در فضای ابری گرد هم می آورد',
-    image: "@/assets/images/jakarta.png",
+    image: "/images/jakarta.png",
     url:'http://www.jakartaee.ir'
   },
   {
     title: 'Microprofile',
     description: ' بهینه سازی جاوا اینترپرایس برای معماری میکروسرویس.',
-    image: "assets/images/micro.png",
+    image: "/images/micro.png",
     url:'https://www.microprofile.io/'
   },
   {
     title: 'Quarkus',
     description: ' Quarkus ایجاد شد تا توسعه دهندگان جاوا را قادر به ایجاد برنامه های کاربردی برای دنیای مدرن و بومی ابری کند. ',
-    image: "@/assets/images/quarkus.png",
+    image: "/images/quarkus.png",
     url:'http://www.quarkus.ir'
   },
   {
@@ -54,8 +54,8 @@ const aboutData : Array<AboutData> = [ //
 </script>
 <template>
 
-  <div class="flex  justify-center items-center max-w-6xl">
-    <div class="row">
+  <div class="container m-auto">
+    <div >
       <!-- Section Title -->
       <div class="section-title text-center wow fadeInUp">
         <Divider/>
