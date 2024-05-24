@@ -13,16 +13,17 @@ function onChangeD():void{
 
 <template>
   <footer class="footer bg-dark text-white mt-auto">
-    <div class="container">
-      <div class="row">
-        <div class="col-md-12 text-center">
-          <p>&copy; Iranian Java User Group</p>
-        </div>
-      </div>
-    </div>
+
     <div v-for="category in langs" :key="category.code" class="flex items-center">
       <RadioButton v-model="selectLang" :inputId="category.code" name="dynamic" :value="category.code" @change="onChangeD" />
       <label :for="category.code" class="ml-2">{{ category.name }}</label>
+    </div>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12 text-center">
+          <p>&copy;Iranian Java User Group</p>
+        </div>
+      </div>
     </div>
   </footer>
 </template>

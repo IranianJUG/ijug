@@ -7,8 +7,16 @@
   "menu_resource": "Resource",
   "menu_header": "Iranian Java User Group",
 
+  "home_header": "(IJUG) Iranian Java User Group",
   "home_title": "Home",
-  "home_header": "Home",
-  "home_btn": "Home"
+
+  "home_btn": "Home",
+
+
+  "contact_header" : "Contact US",
+  "contact_name" : "Name",
+  "contact_email" : "Email",
+  "contact_message" : "Message",
+  "contact_button" : "Submit"
 
 }
