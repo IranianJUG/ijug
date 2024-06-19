@@ -198,7 +198,7 @@ const aboutData : Array<AboutData> = [ //
               <span class="font-bold">{{ about.title }}</span>
             </div>
           </template>
-          <p class="m-0">
+          <p v-html="about.description" class="m-0">
             {{about.description}}
           </p>
         </Fieldset>
