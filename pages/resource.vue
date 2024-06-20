@@ -88,6 +88,34 @@ const bookData : Array<BookData> = [ // Array of book details for the data view
     rate: 4.0,
     downloads: 800,
     url:'/ebook/compelete_refrence.jpg'
+  },
+  {
+    name: 'Designing data-intensive applications: the big ideas behind reliable, scalable, and maintainable systems',
+    image: '/images/Designing_data-intensive_applications.png',
+    rate: 4.0,
+    downloads: 800,
+    url:'/ebook/compelete_refrence.jpg'
+  },
+  {
+    name: 'Unit Testing Principles, Practices, and Patterns',
+    image: '/images/Unit_Testing_Principles_Practices_and_Patterns.png',
+    rate: 4.0,
+    downloads: 800,
+    url:'/ebook/compelete_refrence.jpg'
+  },
+  {
+    name: 'The Pragmatic Programmer - 20th Anniversary Edition',
+    image: '/images/The_Pragmatic_Programmer.png',
+    rate: 4.0,
+    downloads: 800,
+    url:'/ebook/compelete_refrence.jpg'
+  },
+  {
+    name: 'The Phoenix Project : A Novel about IT, DevOps, and Helping Your Business Win',
+    image: '/images/The_Phoenix_Project.png',
+    rate: 4.0,
+    downloads: 800,
+    url:'/ebook/compelete_refrence.jpg'
   }
 ]
 </script>
