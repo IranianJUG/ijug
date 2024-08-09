@@ -11,26 +11,26 @@ const items = ref([
   },
   {
     label:'menu_about_us',
-    icon: 'pi pi-home',
+    icon: 'pi pi-bars',
     route: '/about'
   },
   {
     label: 'menu_contact_us',
-    icon: 'pi pi-envelope',
+    icon: 'pi pi-at',
     route: '/contact'
   },
   {
     label: 'menu_blog',
-    icon: 'pi pi-envelope',
+    icon: 'pi pi-align-justify',
     route: '/blog'
   },
   {
     label: 'menu_event',
-    icon: 'pi pi-envelope',
+    icon: 'pi pi-users',
     route: '/event'
   }, {
     label: 'menu_resource',
-    icon: 'pi pi-envelope',
+    icon: 'pi pi-book',
     route: '/resource'
   }
 ]);

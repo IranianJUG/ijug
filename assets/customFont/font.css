@@ -1,0 +1,40 @@
+/*@font-face {
+    font-family: iran;
+    font-style: normal;
+    src: url("../../resources/index/fonts/iransans.woff");
+    src: url("../../resources/index/fonts/iransans.woff") format("embedded-opentype"), url("../../resources/index/fonts/iransans.woff") format("woff2"), url("../../resources/index/fonts/iransans.woff") format("woff"), url("../fonts/iransans.woff") format("truetype");
+    font-display: swap;
+}*/
+
+@font-face {
+    font-family: iran;
+    font-style: normal;
+    src: url(iransans.woff);
+ /*   src: url("#{resource['customFont:iransans.woff']}") format("embedded-opentype"), url("#{resource['customFont:iransans.woff']}") format("woff2"), url("#{resource['customFont:iransans.woff']}") format("woff"), url("#{resource['customFont:iransans.woff']}") format("truetype");*/
+    font-display: swap;
+}
+
+@font-face {
+    font-family: iranNastaliq;
+    font-style: normal;
+    src: url(IranNastaliq.woff);
+ /*   src: url("#{resource['customFont:IranNastaliq.woff']}") format("embedded-opentype"), url("#{resource['customFont:IranNastaliq.woff']}") format("woff2"), url("#{resource['customFont:IranNastaliq.woff']}") format("woff"), url("#{resource['customFont:IranNastaliq.woff']}") format("truetype");*/
+    font-display: swap;
+}
+
+* {
+    font-family: iran !important;
+    direction: rtl;
+}
+.pi {
+    font-family: 'primeicons' !important;
+}
+
+.eventTitle{
+    font-family: iranNastaliq;
+    font-size: 70px!important;
+    line-height: 145px!important;
+    color: #fff;
+    font-weight: 500!important;
+    margin: 0px 0px 30px 0px;
+}

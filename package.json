@@ -22,6 +22,7 @@
   },
   "dependencies": {
     "primevue": "^3.45.0",
+    "primeicons": "latest",
     "vue3-jalali-calendar": "^1.0.8",
     "vue3-persian-datetime-picker": "^1.2.2"
   }

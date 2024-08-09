@@ -21,6 +21,7 @@ function submitForm(): void {
     </div>
 
 
+    <Panel >
         <div class=" grid grid-cols-1 gap-4 content-center">
           <form @submit.prevent="submitForm" >
             <div class="form-group">
@@ -40,7 +41,8 @@ function submitForm(): void {
             <Button type="submit"    @click="submitForm" > {{$t("contact_button")}} </Button>
           </form>
         </div>
-      </div>
+    </Panel>
+  </div>>
 
 
 </template>

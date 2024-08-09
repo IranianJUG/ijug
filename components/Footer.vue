@@ -12,7 +12,7 @@ function onChangeD():void{
 </script>
 
 <template>
-  <footer class="footer bg-dark text-white mt-auto">
+  <footer class="footer  mt-auto">
 
     <div v-for="category in langs" :key="category.code" class="flex items-center">
       <RadioButton v-model="selectLang" :inputId="category.code" name="dynamic" :value="category.code" @change="onChangeD" />
