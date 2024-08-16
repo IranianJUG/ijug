@@ -4,7 +4,7 @@ import {EventStatus} from "~/interfaces/EventStatus";
 
 const events = ref([
   { title: 'جشن روز برنامه نویس', date: 'پنج‌شنبه 25 مرداد ۱۴۰۳ ساعت ۱۰:۰۰', icon: 'pi pi-spin pi-cog', color: '#84031d',image: '',description: "" },
-  { title: 'جلسه پانزدهم تهران جاگ', date: 'پنج‌شنبه 25 مرداد ۱۴۰۳ ساعت ۱۰:۰۰', icon: 'pi pi-spin pi-spinner', color: '#14b7d2',image: '',description: "" },
+  { title: 'جلسه پانزدهم تهران جاگ', date: 'پنج‌شنبه 25 مرداد ۱۴۰۳ ساعت ۱۰:۰۰', icon: 'pi pi-check-circle', color: '#3cb01b',image: '',description: "" },
   { title: 'جلسه چهاردهم تهران جاگ', date: 'پنج‌شنبه ۲۱ تیر ۱۴۰۳ ساعت ۱۰:۰۰', icon: 'pi pi-check-circle', color: '#3cb01b',image: 'https://raw.githubusercontent.com/TehJUG/assets/main/poster/session-014/14.jpg',description: "" },
   { title: 'جلسه سیزدهم تهران جاگ', date: 'پنج‌شنبه ۲۴ خرداد ۱۴۰۳ ساعت ۱۴:۳۰', icon: 'pi pi-check-circle', color: '#3cb01b',image: 'https://raw.githubusercontent.com/TehJUG/assets/main/poster/session-013/13.jpg',description: "" },
   { title: 'جلسه دوازدهم تهران جاگ', date: 'پنج‌شنبه ۶ اردیبهشت ۱۴۰۳ ساعت ۱۰:۰۰', icon: 'pi pi-check-circle', color: '#3cb01b',image: 'https://raw.githubusercontent.com/TehJUG/assets/main/poster/session-012/12.jpg',description: "" },
@@ -35,7 +35,7 @@ function  setIcon(eventStatus : EventStatus) : string {
       <div class="home-page text-center">
         <!-- Your content goes here -->
         <img src="/images/duke-image.png" alt="Duke of Java" class="img-fluid" />
-
+        <Divider />
         <h1>{{$t("home_header")}}</h1>
       </div>
     </div>
