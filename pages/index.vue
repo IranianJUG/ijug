@@ -30,16 +30,16 @@ function  setIcon(eventStatus : EventStatus) : string {
 </script>
 
 <template>
-  <Divider />
+
     <div class="flex justify-center items-center">
       <div class="home-page text-center">
         <!-- Your content goes here -->
-        <img src="/images/duke-image.png" alt="Duke of Java" class="img-fluid" />
-        <Divider />
+        <img src="/images/IranDuke-resize.png" alt="Duke of Java" class="img-fluid" />
+
         <h1>{{$t("home_header")}}</h1>
       </div>
     </div>
-  <Divider />
+  <Divider/>
   <Timeline :value="events" align="alternate" class="customized-timeline">
     <template #marker="slotProps">
         <span class="flex w-8 h-8 items-center justify-center text-white rounded-full z-10 shadow-sm" :style="{ backgroundColor: slotProps.item.color }">
