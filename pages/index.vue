@@ -3,8 +3,8 @@ import { ref } from "vue";
 import {EventStatus} from "~/interfaces/EventStatus";
 
 const events = ref([
-  { title: 'جشن روز برنامه نویس', date: 'پنج‌شنبه 25 مرداد ۱۴۰۳ ساعت ۱۰:۰۰', icon: 'pi pi-spin pi-cog', color: '#84031d',image: '',description: "" },
-  { title: 'جلسه پانزدهم تهران جاگ', date: 'پنج‌شنبه 25 مرداد ۱۴۰۳ ساعت ۱۰:۰۰', icon: 'pi pi-check-circle', color: '#3cb01b',image: '',description: "" },
+  { title: 'جشن روز برنامه نویس', date: 'پنج‌شنبه 25 مرداد ۱۴۰۳ ساعت ۱۰:۰۰', icon: 'pi pi-spin pi-cog', color: '#84031d',image: 'https://miro.medium.com/v2/resize:fit:640/0*cLBaON1rB2fRsj8w.jpg',description: "جشن روز برنامه نویس" },
+  { title: 'جلسه پانزدهم تهران جاگ', date: 'پنج‌شنبه 25 مرداد ۱۴۰۳ ساعت ۱۰:۰۰', icon: 'pi pi-check-circle', color: '#3cb01b',image: 'https://media.licdn.com/dms/image/v2/D4D22AQH31MC6XQSpyg/feedshare-shrink_800/feedshare-shrink_800/0/1723631246854?e=2147483647&v=beta&t=K_Xv1Ez8kqWIAsglnyLi3SaeniYt4eKzXvLk1g9-Isk',description: "کارگاه DDD" },
   { title: 'جلسه چهاردهم تهران جاگ', date: 'پنج‌شنبه ۲۱ تیر ۱۴۰۳ ساعت ۱۰:۰۰', icon: 'pi pi-check-circle', color: '#3cb01b',image: 'https://raw.githubusercontent.com/TehJUG/assets/main/poster/session-014/14.jpg',description: "" },
   { title: 'جلسه سیزدهم تهران جاگ', date: 'پنج‌شنبه ۲۴ خرداد ۱۴۰۳ ساعت ۱۴:۳۰', icon: 'pi pi-check-circle', color: '#3cb01b',image: 'https://raw.githubusercontent.com/TehJUG/assets/main/poster/session-013/13.jpg',description: "" },
   { title: 'جلسه دوازدهم تهران جاگ', date: 'پنج‌شنبه ۶ اردیبهشت ۱۴۰۳ ساعت ۱۰:۰۰', icon: 'pi pi-check-circle', color: '#3cb01b',image: 'https://raw.githubusercontent.com/TehJUG/assets/main/poster/session-012/12.jpg',description: "" },
