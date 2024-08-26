@@ -1,37 +1,50 @@
-<script setup lang="ts">
-import { ref } from "vue";
-
-const {locales,locale ,setLocale }= useI18n();
-
-const langs = ref(locales);
-const selectLang= ref(locale.value);
-function onChangeD():void{
-  setLocale(selectLang.value)
-  console.log(selectLang);
-}
-</script>
-
 <template>
-  <footer class="footer  mt-auto">
-
-    <div v-for="category in langs" :key="category.code" class="flex items-center">
-      <RadioButton v-model="selectLang" :inputId="category.code" name="dynamic" :value="category.code" @change="onChangeD" />
-      <label :for="category.code" class="ml-2">{{ category.name }}</label>
+  <div class="page-container">
+    <div class="content">
     </div>
-    <div class="container">
-      <div class="row">
-        <div class="col-md-12 text-center">
-          <p>&copy;Iranian Java User Group</p>
-        </div>
+    <footer class="footer">
+      <div class="footer-inner">
+        <p>&copy; Iranian Java User Group</p>
       </div>
-    </div>
-  </footer>
+    </footer>
+  </div>
 </template>
 
 <style scoped>
+.page-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.content {
+  flex: 1;
+}
+
 .footer {
-  width: 100%;
-  position: fixed;
-  bottom: 0;
+  background: linear-gradient(45deg, #1e3c72, #2a5298);
+  color: white;
+  padding: 20px 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.footer-inner {
+  text-align: center;
+}
+
+.footer p {
+  margin: 0;
+}
+
+.footer a {
+  color: #b3c7e6;
+  text-decoration: none;
+  margin: 0 5px;
+}
+
+.footer a:hover {
+  color: white;
+  text-decoration: underline;
 }
 </style>

@@ -6,6 +6,8 @@
   "menu_blog": "Blog",
   "menu_resource": "Resource",
   "menu_header": "Iranian Java User Group",
+  "menu_register": "Register",
+  "menu_login": "Login",
 
   "home_header": "(IJUG) Iranian Java User Group",
   "home_title": "Home",
