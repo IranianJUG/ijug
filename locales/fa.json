@@ -5,17 +5,19 @@
   "menu_event": "رویدادها",
   "menu_blog": "وبلاگ",
   "menu_resource": "کتاب های الکترونیک",
-  "menu_header" : "انجمن کاربران جاوا ایران",
+  "menu_header": "انجمن کاربران جاوا ایران",
+  "menu_register": "ثبت نام",
+  "menu_login": "ورود",
 
   "home_title": "Home",
   "home_header": "(IJUG) انجمن کاربران جاوا ایران",
   "home_btn": "Home",
 
-  "about_header" : "درباره ما",
+  "about_header": "درباره ما",
 
-  "contact_header" : " تماس با ما",
-  "contact_name" : "نام",
-  "contact_email" : "آدرس پستی",
-  "contact_message" : "پیغام",
-  "contact_button" : "ارسال"
+  "contact_header": " تماس با ما",
+  "contact_name": "نام",
+  "contact_email": "آدرس پستی",
+  "contact_message": "پیغام",
+  "contact_button": "ارسال"
 }
