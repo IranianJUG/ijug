@@ -96,4 +96,3 @@ function submitForm(): void {
   </div>
 </template>
 
-<style scoped></style>

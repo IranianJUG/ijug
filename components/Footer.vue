@@ -1,5 +1,5 @@
-<template>
-  <div class="page-container">
+<template >
+  <div class="page-container mt-auto">
     <div class="content">
     </div>
     <footer class="footer">

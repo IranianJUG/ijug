@@ -1,8 +1,35 @@
 <script setup lang="ts">
-import { ref } from "vue";
+import { ref, onBeforeMount, onMounted } from "vue";
 import { useI18n } from "vue-i18n";
+import { useState } from "#app";
 
 const localePath = useLocalePath();
+const { locales, locale, setLocale } = useI18n();
+
+const savedLocale = useState("locale", () => "fa");
+const selectLang = ref(savedLocale.value);
+
+onBeforeMount(() => {
+  if (process.client) {
+    const localStorageLocale = localStorage.getItem("locale") || "fa";
+    savedLocale.value = localStorageLocale;
+    selectLang.value = localStorageLocale;
+  } else {
+    savedLocale.value = "fa";
+  }
+});
+
+onMounted(() => {
+  setLocale(savedLocale.value);
+});
+
+function onChangeLang(lang: string) {
+  setLocale(lang);
+  savedLocale.value = lang;
+  if (process.client) {
+    localStorage.setItem("locale", lang);
+  }
+}
 
 const items = ref([
   {
@@ -46,13 +73,6 @@ const items = ref([
     route: "/register",
   },
 ]);
-
-const { locales, locale, setLocale } = useI18n();
-const selectLang = ref(locale.value);
-
-function onChangeLang(lang: string) {
-  setLocale(lang);
-}
 </script>
 
 <template>
@@ -70,7 +90,7 @@ function onChangeLang(lang: string) {
             :href="href"
             v-bind="props.action"
             @click="navigate"
-            class="menu-item"
+            class="hover:bg-gray-200 rounded hover:text-black"
           >
             <span :class="item.icon" class="menu-icon" />
             <span class="menu-label">{{ $t(item.label) }}</span>
@@ -93,13 +113,18 @@ function onChangeLang(lang: string) {
         </a>
       </template>
       <template #end>
-        <div class="language-dropdown">
+        <div class="px-3">
           <select
             v-model="selectLang"
             @change="onChangeLang(selectLang)"
-            class="form-select"
+            class="hover:bg-gray-200 bg-gray-100 rounded hover:text-black p-1"
           >
-            <option v-for="lang in locales" :key="lang.code" :value="lang.code">
+            <option
+              v-for="lang in locales"
+              :key="lang.code"
+              :value="lang.code"
+              class="text-sm"
+            >
               {{ lang.code.toUpperCase() }}
             </option>
           </select>

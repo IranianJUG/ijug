@@ -1,5 +1,5 @@
-export enum EventStatus{
-    done,
-    progress,
-    preparation
+export enum EventStatus {
+  done,
+  progress,
+  preparation,
 }
