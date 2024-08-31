@@ -56,4 +56,9 @@
   ::-webkit-scrollbar-thumb:hover {
     background: #555;
   }
-  
+  .p-menubar-end{
+    flex-grow: 1 !important;
+    display: flex !important;
+    flex-direction: row !important;
+    justify-content: end !important;
+  }

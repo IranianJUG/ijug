@@ -9,9 +9,11 @@
   "menu_register": "ثبت نام",
   "menu_login": "ورود",
 
-  "home_title": "Home",
+  "home_title": "خانه",
   "home_header": "(IJUG) انجمن کاربران جاوا ایران",
-  "home_btn": "Home",
+  "home_btn": "خانه",
+
+  "blog_comingsoon":"به زودی ...",
 
   "about_header": "درباره ما",
 
