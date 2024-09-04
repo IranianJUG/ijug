@@ -186,12 +186,12 @@ const aboutData: Array<AboutData> = [
   <div class="container m-auto">
     <div>
       <!-- Section Title -->
-      <div class="section-title text-center wow fadeInUp">
+      <div class="section-title wow fadeInUp">
         <Divider />
 
-        <h2>{{ $t("about_header") }}</h2>
+        <h2 class="text-gray-950 text-lg font-bold">{{ $t("about_header") }}</h2>
         <Divider />
-        <p class="text-center font-tahoma">
+        <p class="text-gray-700 leading-8">
           گروه کاربران جاوا ایران (IJUG) یک سازمان غیرانتفاعی با ماموریت ترویج
           یادگیری، تبادل اطلاعات و بحث در جامعه ما در مورد موضوعات مرتبط با زبان
           و پلتفرم برنامه نویسی جاوا است. IJUG جلسات ماهانه برگزار می کند و از
@@ -217,7 +217,7 @@ const aboutData: Array<AboutData> = [
               <span class="font-bold">{{ about.title }}</span>
             </div>
           </template>
-          <p class="m-0">
+          <p class="m-0 text-justify text-gray-700 leading-8">
             {{ about.description }}
           </p>
         </Fieldset>
