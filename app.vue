@@ -1,10 +1,9 @@
-
 <script setup lang="ts">
 import "./assets/customFont/font.css";
 import "primeicons/primeicons.css";
 </script>
 <style>
-*{
+* {
   font-size: large;
 }
 </style>
@@ -13,5 +12,4 @@ import "primeicons/primeicons.css";
   <NuxtLayout>
     <NuxtPage />
   </NuxtLayout>
-
 </template>

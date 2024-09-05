@@ -7,58 +7,64 @@
 }*/
 
 @font-face {
-    font-family: iran;
-    font-style: normal;
-    src: url(iransans.woff);
- /*   src: url("#{resource['customFont:iransans.woff']}") format("embedded-opentype"), url("#{resource['customFont:iransans.woff']}") format("woff2"), url("#{resource['customFont:iransans.woff']}") format("woff"), url("#{resource['customFont:iransans.woff']}") format("truetype");*/
-    font-display: swap;
+  font-family: iran;
+  font-style: normal;
+  src: url(iransans.woff);
+  /*   src: url("#{resource['customFont:iransans.woff']}") format("embedded-opentype"), url("#{resource['customFont:iransans.woff']}") format("woff2"), url("#{resource['customFont:iransans.woff']}") format("woff"), url("#{resource['customFont:iransans.woff']}") format("truetype");*/
+  font-display: swap;
 }
 
 @font-face {
-    font-family: iranNastaliq;
-    font-style: normal;
-    src: url(IranNastaliq.woff);
- /*   src: url("#{resource['customFont:IranNastaliq.woff']}") format("embedded-opentype"), url("#{resource['customFont:IranNastaliq.woff']}") format("woff2"), url("#{resource['customFont:IranNastaliq.woff']}") format("woff"), url("#{resource['customFont:IranNastaliq.woff']}") format("truetype");*/
-    font-display: swap;
+  font-family: iranNastaliq;
+  font-style: normal;
+  src: url(IranNastaliq.woff);
+  /*   src: url("#{resource['customFont:IranNastaliq.woff']}") format("embedded-opentype"), url("#{resource['customFont:IranNastaliq.woff']}") format("woff2"), url("#{resource['customFont:IranNastaliq.woff']}") format("woff"), url("#{resource['customFont:IranNastaliq.woff']}") format("truetype");*/
+  font-display: swap;
 }
 
 * {
-    font-family: iran !important;
-
+  font-family: iran !important;
 }
 .pi {
-    font-family: 'primeicons' !important;
+  font-family: "primeicons" !important;
 }
 
-.eventTitle{
-    font-family: iranNastaliq;
-    font-size: 70px!important;
-    line-height: 145px!important;
-    color: #fff;
-    font-weight: 500!important;
-    margin: 0px 0px 30px 0px;
+.eventTitle {
+  font-family: iranNastaliq;
+  font-size: 70px !important;
+  line-height: 145px !important;
+  color: #fff;
+  font-weight: 500 !important;
+  margin: 0px 0px 30px 0px;
 }
 
 ::-webkit-scrollbar {
-    width: 10px;
-  }
-  
-  ::-webkit-scrollbar-track {
-    background: #f1f1f1;
-    border-radius: 10px;
-  }
-  
-  ::-webkit-scrollbar-thumb {
-    background: #888;
-    border-radius: 10px;
-  }
-  
-  ::-webkit-scrollbar-thumb:hover {
-    background: #555;
-  }
-  .p-menubar-end{
-    flex-grow: 1 !important;
-    display: flex !important;
-    flex-direction: row !important;
-    justify-content: end !important;
-  }
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #888;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
+.p-menubar-end {
+  flex-grow: 1 !important;
+  display: flex !important;
+  flex-direction: row !important;
+  justify-content: end !important;
+}
+
+#persian-calendar #vpc_calendar .vpc_week.vpc_week-period .vpc_event.oneDay {
+  display: block !important;
+  height: 8em !important;
+  line-height: 3em !important;
+}

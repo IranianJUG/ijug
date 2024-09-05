@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref, onBeforeMount, onMounted } from "vue";
+import { ref, onBeforeMount, onMounted, watchEffect } from "vue";
 import { useI18n } from "vue-i18n";
 import { useState } from "#app";
 
@@ -9,11 +9,22 @@ const { locales, locale, setLocale } = useI18n();
 const savedLocale = useState("locale", () => "fa");
 const selectLang = ref(savedLocale.value);
 
+const cookieName = "userInfo";
+const myCookie = useCookie(cookieName);
+const isLoggedIn = ref(false);
+const userName = ref("");
+
 onBeforeMount(() => {
   if (process.client) {
     const localStorageLocale = localStorage.getItem("locale") || "fa";
     savedLocale.value = localStorageLocale;
     selectLang.value = localStorageLocale;
+
+    const userInfo = myCookie["_rawValue"];
+    if (!!userInfo?.token) {
+      isLoggedIn.value = true;
+      userName.value = `${userInfo.first_name} ${userInfo.last_name}`;
+    }
   } else {
     savedLocale.value = "fa";
   }
@@ -21,6 +32,75 @@ onBeforeMount(() => {
 
 onMounted(() => {
   setLocale(savedLocale.value);
+});
+
+const items = ref([]);
+
+watchEffect(() => {
+  items.value = [
+    {
+      label: "menu_header",
+      icon: "pi pi-home",
+      route: "/",
+    },
+    {
+      label: "menu_about_us",
+      icon: "pi pi-bars",
+      route: "/about",
+    },
+    {
+      label: "menu_contact_us",
+      icon: "pi pi-at",
+      route: "/contact",
+    },
+    {
+      label: "menu_blog",
+      icon: "pi pi-align-justify",
+      route: "/blog",
+    },
+    {
+      label: "menu_event",
+      icon: "pi pi-users",
+      route: "/event",
+    },
+    {
+      label: "menu_resource",
+      icon: "pi pi-book",
+      route: "/resource",
+    },
+  ];
+
+  if (!isLoggedIn.value) {
+    items.value.push(
+      {
+        label: "menu_login",
+        icon: "pi pi-sign-in",
+        route: "/login",
+      },
+      {
+        label: "menu_register",
+        icon: "pi pi-user-plus",
+        route: "/register",
+      }
+    );
+  } else {
+    items.value.push({
+      label: `${userName.value}, خوش آمدید`,
+      icon: "pi pi-user",
+      items: [
+        {
+          label: "پروفایل",
+          icon: "pi pi-user-edit",
+          route: "/user-dashboard",
+        },
+        {
+          label: "خروج از حساب کاربری",
+          icon: "pi pi-sign-out",
+          command: logout,
+        },
+      ],
+    });
+  }
 });
 
 function onChangeLang(lang: string) {
@@ -31,48 +111,12 @@ function onChangeLang(lang: string) {
   }
 }
 
-const items = ref([
-  {
-    label: "menu_header",
-    icon: "pi pi-home",
-    route: "/",
-  },
-  {
-    label: "menu_about_us",
-    icon: "pi pi-bars",
-    route: "/about",
-  },
-  {
-    label: "menu_contact_us",
-    icon: "pi pi-at",
-    route: "/contact",
-  },
-  {
-    label: "menu_blog",
-    icon: "pi pi-align-justify",
-    route: "/blog",
-  },
-  {
-    label: "menu_event",
-    icon: "pi pi-users",
-    route: "/event",
-  },
-  {
-    label: "menu_resource",
-    icon: "pi pi-book",
-    route: "/resource",
-  },
-  {
-    label: "menu_login",
-    icon: "pi pi-sign-in",
-    route: "/login",
-  },
-  {
-    label: "menu_register",
-    icon: "pi pi-user-plus",
-    route: "/register",
-  },
-]);
+function logout() {
+  myCookie.value = null;
+  isLoggedIn.value = false;
+  userName.value = "";
+  navigateTo("/");
+}
 </script>
 
 <template>
@@ -97,6 +141,34 @@ const items = ref([
           </a>
         </NuxtLink>
         <a
+          v-else-if="item.items"
+          v-ripple
+          href="#"
+          class="menu-item"
+          v-bind="props.action"
+        >
+          <span :class="item.icon" class="menu-icon" />
+          <span class="menu-label">{{ item.label }}</span>
+          <span
+            v-if="hasSubmenu"
+            class="pi pi-fw pi-angle-down menu-submenu-icon"
+          />
+          <ul v-if="hasSubmenu" class="submenu">
+            <li v-for="subItem in item.items" :key="subItem.label">
+              <NuxtLink
+                v-if="subItem.route"
+                :to="localePath(subItem.route)"
+                custom
+              >
+                <a v-ripple class="submenu-item">{{ $t(subItem.label) }}</a>
+              </NuxtLink>
+              <a v-else @click="subItem.command" class="submenu-item">{{
+                $t(subItem.label)
+              }}</a>
+            </li>
+          </ul>
+        </a>
+        <a
           v-else
           v-ripple
           :href="item.url"
@@ -106,10 +178,6 @@ const items = ref([
         >
           <span :class="item.icon" class="menu-icon" />
           <span class="menu-label">{{ $t(item.label) }}</span>
-          <span
-            v-if="hasSubmenu"
-            class="pi pi-fw pi-angle-down menu-submenu-icon"
-          />
         </a>
       </template>
       <template #end>

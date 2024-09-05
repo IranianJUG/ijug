@@ -137,9 +137,9 @@ const bookData: Array<BookData> = [
     </div>
     <Divider />
 
-    <DataView :value="bookData" :layout="layout">
+    <DataView dir="ltr" :value="bookData" :layout="layout">
       <template #header>
-        <div class="flex justify-end">
+        <div  class="flex justify-end">
           <SelectButton v-model="layout" :options="options" :allowEmpty="false">
             <template #option="{ option }">
               <i
@@ -233,60 +233,56 @@ const bookData: Array<BookData> = [
             class="w-full sm:w-1/2 md:w-4/12 xl:w-1/2 p-2"
           >
             <div
-              class="p-4 border border-surface-200 dark:border-surface-700 bg-surface-0 dark:bg-surface-900 rounded-md flex flex-col"
+              class="p-4 h-full shadow bg-surface-0 dark:bg-surface-900 rounded-md flex flex-col"
             >
               <div class="surface-50 flex justify-center rounded-md p-3">
                 <div class="relative mx-auto">
                   <img
-                    class="rounded-md w-full"
+                    class="rounded-md w-full max-h-60"
                     :src="item.image"
                     :alt="item.name"
-                    style="max-width: 300px"
                   />
                 </div>
               </div>
-              <div class="pt-4">
-                <div class="flex flex-row justify-between items-start gap-2">
-                  <div>
-                    <span class="font-medium text-secondary text-sm">{{
-                      item.category
-                    }}</span>
-                    <div
-                      class="text-lg font-medium text-surface-900 dark:text-surface-0 mt-1"
-                    >
-                      {{ item.name }}
-                    </div>
-                  </div>
+              <div class="flex flex-row justify-between items-start gap-2">
+                <div>
+                  <span class="font-medium text-secondary text-sm">{{
+                    item.category
+                  }}</span>
                   <div
-                    class="bg-surface-100 dark:bg-surface-700 p-1"
-                    style="border-radius: 30px"
+                    class="text-lg font-medium text-surface-900 dark:text-surface-0 mt-1"
                   >
-                    <div
-                      class="surface-0 flex items-center gap-2 justify-center py-1 px-2"
-                      style="border-radius: 30px; shadow-md 0px 1px 2px 0px rgba(0, 0, 0, 0.04), 0px 1px 2px 0px rgba(0, 0, 0, 0.06)"
-                    >
-                      <span
-                        class="text-surface-900 dark:text-surface-0 font-medium text-sm"
-                        >{{ item.rate }}</span
-                      >
-                      <i class="pi pi-star-fill text-yellow-500"></i>
-                    </div>
+                    {{ item.name }}
                   </div>
                 </div>
-                <div class="flex flex-col gap-4 mt-4">
-                  <span
-                    class="text-2xl font-semibold text-surface-900 dark:text-surface-0"
-                    >Download: {{ item.downloads }}</span
+                <div
+                  class="bg-surface-100 dark:bg-surface-700 p-1"
+                  style="border-radius: 30px"
+                >
+                  <div
+                    class="surface-0 flex items-center gap-2 justify-center py-1 px-2"
+                    style="border-radius: 30px; shadow-md 0px 1px 2px 0px rgba(0, 0, 0, 0.04), 0px 1px 2px 0px rgba(0, 0, 0, 0.06)"
                   >
-                  <div class="flex gap-2">
-                    <Button
-                      icon="pi pi-shopping-cart"
-                      label="Download"
-                      class="flex-auto white-space-nowrap"
+                    <span
+                      class="text-surface-900 dark:text-surface-0 font-medium text-sm"
+                      >{{ item.rate }}</span
                     >
-                      <a :href="item.url">Download</a>
-                    </Button>
+                    <i class="pi pi-star-fill text-yellow-500"></i>
                   </div>
+                </div>
+              </div>
+              <div class="flex flex-col gap-1 mt-auto pt-2">
+                <span class="text-sm text-surface-900 dark:text-surface-0"
+                  >Downloads: {{ item.downloads }}</span
+                >
+                <div class="flex gap-2 flex-row justify-start">
+                  <Button
+                    icon="pi pi-shopping-cart"
+                    label="Download"
+                    class="bg-indigo-500 !rounded-lg p-2 text-white"
+                  >
+                    <a :href="item.url">Download</a>
+                  </Button>
                 </div>
               </div>
             </div>
