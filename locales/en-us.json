@@ -8,19 +8,48 @@
   "menu_header": "Iranian Java User Group",
   "menu_register": "Register",
   "menu_login": "Login",
+  "menu_profile": "Profile",
+  "menu_sign_out": "Sign out",
+  "menu_welcome": "Welcome",
 
   "home_header": "(IJUG) Iranian Java User Group",
   "home_title": "Home",
   "home_btn": "Home",
+  "home_welcome_to_iran_java_community": "Welcome to Iran's Java community",
+  "home_programmer_day_celebration": "Programmer's Day celebration",
+  "home_ddd_workshop": "DDD workshop",
+  "home_15th_session_of_tehran_jug": "15th session of Tehran JUG",
+  "home_fourteenth_meeting_of_tehran_jug": "The fourteenth meeting of Tehran JUG",
+  "home_thirteenth_meeting_of_tehran_jug": "Thirteenth meeting of Tehran JUG",
+  "home_twelfth_meeting_of_tehran_jug": "The twelfth meeting of Tehran JUG",
+  "home_11th_session_of_tehran_jug_on_engineer_day": "The 11th session of Tehran JUG on Engineer's Day",
+  "home_introduction_to_microprofile": "Introduction to Microprofile",
+  "home_25th_anniversary_of_jcp": "25th anniversary of JCP",
+  "home_celebrating_25_years_of_jcp_java_community_process": "Celebrating 25 years of JCP (Java Community Process)",
 
-  "blog_comingsoon":"Coming Soon ...",
+  "blog_comingsoon": "Coming Soon ...",
 
-  "about_header" : "About US",
+  "about_header": "About US",
 
-  "contact_header" : "Contact US",
-  "contact_name" : "Name",
-  "contact_email" : "Email",
-  "contact_message" : "Message",
-  "contact_button" : "Submit"
+  "contact_header": "Contact US",
+  "contact_name": "Name",
+  "contact_email": "Email",
+  "contact_message": "Message",
+  "contact_button": "Submit",
 
+  "profile_email": "Email",
+  "profile_mobileNumber": "Mobile Number",
+  "profile_company": "Company",
+  "profile_position": "Position",
+
+  "user_dashboard_user_information": "User information",
+  "user_dashboard_registered_events": "Registered events",
+  "user_dashboard_payments": "Payments",
+
+  "event_date": "Date",
+  "event_location": "Location",
+  "event_price": "Price",
+  "event_buy": "Buy",
+  "event_close": "Close",
+  "event_toman": "Toman"
 }

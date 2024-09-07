@@ -20,9 +20,9 @@
           </li>
           <li class="mb-4">
             <NuxtLink
-              to="/dashboard/wallet"
+              to="/dashboard/payments"
               class="block py-2.5 px-4 rounded transition duration-200 hover:bg-indigo-600 hover:text-white"
-              >کیف پول</NuxtLink
+              >پرداخت ها</NuxtLink
             >
           </li>
         </ul>
