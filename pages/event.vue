@@ -30,7 +30,7 @@ const handlePurchase = async () => {
   try {
     if (!!userInfo?.token) {
       const response = await $fetch(
-        `http://api.awscloud.ir/api/payment/event/${selectedEvent.value.id}/${count.value}`,
+        `https://api.awscloud.ir/api/smartis/event/${selectedEvent.value.id}/${count.value}`,
         {
           method: "GET",
           headers: {
@@ -58,7 +58,7 @@ const handlePurchase = async () => {
 
 async function getAllEvents() {
   try {
-    const response = await $fetch("http://api.awscloud.ir/api/event", {
+    const response = await $fetch("https://api.awscloud.ir/api/event", {
       method: "GET",
     });
 
@@ -66,8 +66,13 @@ async function getAllEvents() {
       const allEvents = response.data.map((data: any) => {
         return {
           id: data.id,
-          startDateTime: moment(data.event_time),
-          endDateTime: moment(data.event_time).add(3, "hours"),
+          startDateTime: moment(data.event_time)
+            .locale("fa")
+            .format("YYYY/MM/DD HH:mm"),
+          endDateTime: moment(data.event_time)
+            .add(3, "hours")
+            .locale("fa")
+            .format("YYYY/MM/DD HH:mm"),
           title: data.name,
           color: "#29B6F6",
           price: data.price,

@@ -3,7 +3,6 @@ import { ref } from "vue";
 import { EventStatus } from "~/interfaces/EventStatus";
 
 const isModalVisible = ref(false);
-const selectedEvent = ref(null);
 const cookieName = "userInfo";
 const myCookie = useCookie(cookieName);
 
@@ -11,7 +10,7 @@ const userInfo = myCookie.value;
 const events = ref([
   {
     title: "home_programmer_day_celebration",
-    date: "پنج‌شنبه 25 مرداد ۱۴۰۳ ساعت ۱۰:۰۰",
+    date: "چهارشنبه 21 مرداد ۱۴۰۳ ساعت ۱6:۰۰",
     icon: "pi pi-spin pi-cog",
     color: "#84031d",
     image: "https://miro.medium.com/v2/resize:fit:640/0*cLBaON1rB2fRsj8w.jpg",
@@ -95,7 +94,7 @@ const handlePurchase = async () => {
   try {
     if (!!userInfo?.token) {
       const response = await $fetch(
-        `http://api.awscloud.ir/api/payment/event/11`,
+        `https://api.awscloud.ir/api/smartis/event/11/1`,
         {
           method: "GET",
           headers: {
@@ -190,7 +189,7 @@ const handlePurchase = async () => {
       <h2 class="modal-title">همایش بزرگ برنامه نویسی</h2>
       <p class="modal-detail">
         <strong>تاریخ:</strong>
-        2024-09-11 16:00
+        1403/06/21 16:00
       </p>
 
       <p class="modal-detail">

@@ -158,7 +158,7 @@ const otpCode = ref("");
 
 async function register() {
   try {
-    const register = await $fetch("http://api.awscloud.ir/api/user", {
+    const register = await $fetch("https://api.awscloud.ir/api/user", {
       method: "POST",
       body: {
         first_name: fName.value,
@@ -184,7 +184,7 @@ async function register() {
 
 async function verifyOtp() {
   try {
-    const response = await $fetch("http://api.awscloud.ir/api/auth/login", {
+    const response = await $fetch("https://api.awscloud.ir/api/auth/login", {
       method: "POST",
       body: {
         mobile: mobileNumber.value,
