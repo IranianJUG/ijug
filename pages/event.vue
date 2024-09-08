@@ -120,7 +120,7 @@ onMounted(() => {
         </p>
 
         <p class="modal-detail price">
-          <strong>قیمت:</strong> {{ formatPrice(selectedEvent.price) }} تومان
+          <strong>قیمت:</strong> {{ formatPrice(selectedEvent.price) }} ریال
         </p>
 
         <div class="modal-actions">
