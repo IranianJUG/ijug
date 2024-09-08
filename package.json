@@ -21,6 +21,7 @@
     "vue-router": "^4.2.5"
   },
   "dependencies": {
+    "leaflet": "^1.9.4",
     "primeicons": "^7.0.0",
     "primevue": "^3.53.0",
     "vue3-jalali-calendar": "^1.0.8",

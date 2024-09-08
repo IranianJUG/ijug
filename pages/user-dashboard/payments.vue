@@ -45,7 +45,7 @@ const formatPrice = (price) => {
 
 async function getAllPayments() {
   try {
-    const response = await $fetch("http://api.awscloud.ir/api/payment", {
+    const response = await $fetch("https://api.awscloud.ir/api/payment", {
       method: "GET",
       headers: {
         Authorization: `Bearer ${userInfo.token}`,
@@ -56,7 +56,9 @@ async function getAllPayments() {
       const allPayments = response.data.map((data) => {
         return {
           id: data.id,
-          createdAt: moment(data.created_at).format("YYYY/MM/DD HH:mm"),
+          createdAt: moment(data.created_at)
+            .locale("fa")
+            .format("YYYY/MM/DD HH:mm"),
           amount: formatPrice(data.amount),
           status: data.status,
           count: data.count,
