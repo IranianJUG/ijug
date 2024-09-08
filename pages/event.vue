@@ -6,7 +6,6 @@ import moment from "jalali-moment";
 moment.locale("ir");
 
 const events = ref([]);
-// const blockedDates = ref([]);
 const selectedEvent = ref(null);
 const isModalVisible = ref(false);
 const count = ref(1);
@@ -76,9 +75,6 @@ async function getAllEvents() {
       });
 
       events.value = allEvents;
-      // blockedDates.value = allEvents.map((event: any) =>
-      //   event.startDateTime.format("YYYY-MM-DD")
-      // );
     } else {
       alert("دریافت اطلاعات رویدادها ناموفق بود. لطفا دوباره تلاش کنید.");
     }
@@ -95,7 +91,6 @@ onMounted(() => {
 
 <template>
   <div>
-    <!-- :disabledDates="blockedDates" -->
     <jalaliCalendar
       :eventsList="events"
       disablePastDays

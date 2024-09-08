@@ -79,16 +79,17 @@
 
     <p v-else>در حال بارگذاری...</p>
 
-    <!-- بخش اسپانسرها -->
     <div class="mt-12">
       <h2 class="text-3xl font-bold mb-6 text-center text-gray-800">
         اسپانسرهای رویداد
       </h2>
-      <div class="flex flex-wrap justify-center space-x-6">
+      <div
+        class="grid grid-cols-2 gap-6 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6"
+      >
         <div
           v-for="sponsor in sponsors"
           :key="sponsor.name"
-          class="text-center mb-6 mx-11"
+          class="text-center mb-6"
         >
           <img
             :src="sponsor.logo"
@@ -207,14 +208,12 @@ async function downloadTicketAsPdf(ticketId) {
   const ticketElement = document.getElementById(`ticket-${ticketId}`);
   if (ticketElement) {
     try {
-      // تبدیل کارت بلیط به تصویر با html2canvas
       const canvas = await html2canvas(ticketElement, {
-        scale: 2, // کیفیت بهتر
+        scale: 2,
         ignoreElements: (element) =>
           element.classList.contains("hidden-for-pdf"),
       });
 
-      // تبدیل تصویر به PDF با jsPDF
       const imgData = canvas.toDataURL("image/png");
       const pdf = new jsPDF({
         orientation: "portrait",

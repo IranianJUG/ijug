@@ -75,14 +75,6 @@ const user = ref({
           </div>
         </div>
       </div>
-
-      <!-- <div class="text-center mt-6">
-        <Button
-          label="ویرایش پروفایل"
-          icon="pi pi-cog"
-          class="p-button-rounded p-button-primary"
-        />
-      </div> -->
     </div>
   </div>
 </template>
