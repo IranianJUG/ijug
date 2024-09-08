@@ -93,24 +93,28 @@ function setIcon(eventStatus: EventStatus): string {
 
 const handlePurchase = async () => {
   try {
-    const response = await $fetch(
-      `http://api.awscloud.ir/api/payment/event/11/1`,
-      {
-        method: "GET",
-        headers: {
-          Authorization: `Bearer ${userInfo.token}`,
-        },
-      }
-    );
-
-    if (response.success) {
-      isModalVisible.value = false;
-      window.location.replace(
-        "https://wallet.smartispay.app/" + response.data.payment_id
+    if (!!userInfo?.token) {
+      const response = await $fetch(
+        `http://api.awscloud.ir/api/payment/event/11`,
+        {
+          method: "GET",
+          headers: {
+            Authorization: `Bearer ${userInfo.token}`,
+          },
+        }
       );
-      // await router.push("/payment-success");
+
+      if (response.success) {
+        isModalVisible.value = false;
+        window.location.replace(
+          "https://wallet.smartispay.app/" + response.data.payment_id
+        );
+        // await router.push("/payment-success");
+      } else {
+        alert("خرید ناموفق بود. لطفا دوباره تلاش کنید.");
+      }
     } else {
-      alert("خرید ناموفق بود. لطفا دوباره تلاش کنید.");
+      alert("برای خرید بلیط رویداد ابتدا ثبت نام نمایید.");
     }
   } catch (error) {
     console.error("خطا در انجام خرید:", error);
@@ -147,7 +151,7 @@ const handlePurchase = async () => {
       <template #content="slotProps">
         <Card
           class="mt-6 shadow-lg"
-          :class="{'cursor-pointer': slotProps.item.clickable}"
+          :class="{ 'cursor-pointer': slotProps.item.clickable }"
           @click="slotProps.item.clickable ? (isModalVisible = true) : null"
         >
           <template #title>
