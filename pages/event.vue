@@ -9,7 +9,7 @@ const events = ref([]);
 const blockedDates = ref([]);
 const selectedEvent = ref(null);
 const isModalVisible = ref(false);
-const count = ref(1)
+const count = ref(1);
 const router = useRouter();
 
 const cookieName = "userInfo";
@@ -28,22 +28,28 @@ const formatPrice = (price: number) => {
 
 const handlePurchase = async () => {
   try {
-    const response = await $fetch(
-      `http://api.awscloud.ir/api/payment/event/${selectedEvent.value.id}/${count.value}`,
-      {
-        method: "GET",
-        headers: {
-          Authorization: `Bearer ${userInfo.token}`,
-        },
+    if (!!userInfo?.token) {
+      const response = await $fetch(
+        `http://api.awscloud.ir/api/payment/event/${selectedEvent.value.id}/${count.value}`,
+        {
+          method: "GET",
+          headers: {
+            Authorization: `Bearer ${userInfo.token}`,
+          },
+        }
+      );
+
+      if (response.success) {
+        isModalVisible.value = false;
+        window.location.replace(
+          "https://wallet.smartispay.app/" + response.data.payment_id
+        );
+        // await router.push("/payment-success");
+      } else {
+        alert("خرید ناموفق بود. لطفا دوباره تلاش کنید.");
       }
-    );
-    
-    if (response.success) {
-      isModalVisible.value = false;
-      window.location.replace("https://wallet.smartispay.app/"+response.data.payment_id)
-      // await router.push("/payment-success");
     } else {
-      alert("خرید ناموفق بود. لطفا دوباره تلاش کنید.");
+      alert("برای خرید بلیط رویداد ابتدا ثبت نام نمایید.");
     }
   } catch (error) {
     console.error("خطا در انجام خرید:", error);
