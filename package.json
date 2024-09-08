@@ -21,8 +21,8 @@
     "vue-router": "^4.2.5"
   },
   "dependencies": {
-    "primevue": "^3.45.0",
-    "primeicons": "latest",
+    "primeicons": "^7.0.0",
+    "primevue": "^3.53.0",
     "vue3-jalali-calendar": "^1.0.8",
     "vue3-persian-datetime-picker": "^1.2.2"
   }

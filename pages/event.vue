@@ -9,7 +9,13 @@ const events = ref([]);
 const blockedDates = ref([]);
 const selectedEvent = ref(null);
 const isModalVisible = ref(false);
+const count = ref(1)
 const router = useRouter();
+
+const cookieName = "userInfo";
+const myCookie = useCookie(cookieName);
+
+const userInfo = myCookie.value;
 
 const showEventModal = (event: any) => {
   selectedEvent.value = event;
@@ -23,22 +29,24 @@ const formatPrice = (price: number) => {
 const handlePurchase = async () => {
   try {
     const response = await $fetch(
-      `http://api.awscloud.ir/api/payment/event/${selectedEvent.value.id}`,
+      `http://api.awscloud.ir/api/payment/event/${selectedEvent.value.id}/${count.value}`,
       {
-        method: "POST",
+        method: "GET",
+        headers: {
+          Authorization: `Bearer ${userInfo.token}`,
+        },
       }
     );
-
+    
     if (response.success) {
-      alert("خرید با موفقیت انجام شد!");
       isModalVisible.value = false;
-      await router.push("/payment-success");
+      window.location.replace("https://wallet.smartispay.app/"+response.data.payment_id)
+      // await router.push("/payment-success");
     } else {
       alert("خرید ناموفق بود. لطفا دوباره تلاش کنید.");
     }
   } catch (error) {
     console.error("خطا در انجام خرید:", error);
-    alert("خطایی رخ داده است. لطفا دوباره تلاش کنید.");
   }
 };
 
@@ -51,6 +59,7 @@ async function getAllEvents() {
     if (response.success) {
       const allEvents = response.data.map((data: any) => {
         return {
+          id: data.id,
           startDateTime: moment(data.event_time),
           endDateTime: moment(data.event_time).add(3, "hours"),
           title: data.name,

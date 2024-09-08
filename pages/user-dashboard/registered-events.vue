@@ -1,48 +1,75 @@
 <template>
   <div>
-    <h1 class="text-2xl font-bold mb-4">رویدادهای ثبت‌نام شده</h1>
-    <div class="bg-white p-6 rounded-lg shadow-md">
+    <h1 class="text-2xl font-bold mb-4">بلیط ها</h1>
+    <div class="bg-white p-6 rounded-lg shadow-md" v-if="tickets">
       <ul>
-        <li v-for="event in events" :key="event.id" class="mb-4">
+        <li v-for="ticket in tickets" :key="event.id" class="mb-4">
           <div class="p-4 border rounded-lg">
-            <h2 class="text-xl font-bold text-indigo-600">{{ event.title }}</h2>
-            <p class="text-gray-700">تاریخ: {{ event.date }}</p>
-            <p class="text-gray-700">محل برگزاری: {{ event.location }}</p>
+            <h2 class="text-xl font-bold text-indigo-600">{{ ticket.name }}</h2>
+            <p class="text-gray-700">تاریخ: {{ ticket.event_time }}</p>
+            <p class="text-gray-700">
+              محل برگزاری: {{ ticket.location_address }}
+            </p>
           </div>
         </li>
       </ul>
     </div>
+    <p v-else>در حال بارگذاری...</p>
   </div>
 </template>
 
 <script setup>
-import { ref } from "vue";
+import { ref, onMounted } from "vue";
+import moment from "jalali-moment";
 
-const events = ref([
-  {
-    id: 1,
-    title: "رویداد شماره ۱",
-    date: "2024-09-15",
-    location: "تهران",
-  },
-  {
-    id: 2,
-    title: "رویداد شماره ۲",
-    date: "2024-10-20",
-    location: "مشهد",
-  },
-  {
-    id: 3,
-    title: "رویداد شماره ۳",
-    date: "2024-11-25",
-    location: "اصفهان",
-  },
-]);
+moment.locale("ir");
+
+const cookieName = "userInfo";
+const myCookie = useCookie(cookieName);
+const userInfo = myCookie.value;
+
+const tickets = ref([]);
+
+// const formatPrice = (price) => {
+//   return price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+// };
+
+async function getAllTickets() {
+  try {
+    const response = await $fetch("http://api.awscloud.ir/api/ticket", {
+      method: "GET",
+      headers: {
+        Authorization: `Bearer ${userInfo.token}`,
+      },
+    });
+
+    if (response.success) {
+      const allTickets = response.data.map((data) => {
+        return {
+          id: data.id,
+          createdAt: moment(data.created_at).format("YYYY/MM/DD HH:mm"),
+          status: data.status,
+          count: data.count,
+        };
+      });
+
+      tickets.value = allTickets;
+    } else {
+      alert("دریافت اطلاعات بلیط ها ناموفق بود. لطفا دوباره تلاش کنید.");
+    }
+  } catch (error) {
+    console.error("خطا در دریافت بلیط ها:", error);
+    alert("خطایی رخ داده است. لطفا دوباره تلاش کنید.");
+  }
+}
+
+onMounted(() => {
+  getAllTickets();
+});
 </script>
 
 <style scoped></style>
 
-<!-- اعمال Layout -->
 <script>
 export default {
   layout: "user-dashboard",

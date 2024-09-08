@@ -89,12 +89,12 @@ watchEffect(() => {
       icon: "pi pi-user",
       items: [
         {
-          label: "پروفایل",
+          label: "menu_profile",
           icon: "pi pi-user-edit",
           route: "/user-dashboard",
         },
         {
-          label: "خروج از حساب کاربری",
+          label: "menu_sign_out",
           icon: "pi pi-sign-out",
           command: logout,
         },
@@ -174,12 +174,14 @@ function logout() {
           :href="item.url"
           :target="item.target"
           v-bind="props.action"
-          class="menu-item"
+          class="submenu-item"
+          style="color: red"
         >
           <span :class="item.icon" class="menu-icon" />
           <span class="menu-label">{{ $t(item.label) }}</span>
         </a>
       </template>
+
       <template #end>
         <div class="px-3">
           <select
@@ -231,7 +233,9 @@ function logout() {
 .menu-submenu-icon {
   margin-left: auto;
 }
-
+.submenu ul {
+  width: 100%;
+}
 .language-dropdown {
   margin-left: auto;
 }

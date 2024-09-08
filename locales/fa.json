@@ -8,12 +8,26 @@
   "menu_header": "انجمن کاربران جاوا ایران",
   "menu_register": "ثبت نام",
   "menu_login": "ورود",
+  "menu_profile": "پروفایل",
+  "menu_sign_out": "خروج از حساب کاربری",
+  "menu_welcome": "خوش آمدید",
 
   "home_title": "خانه",
   "home_header": "(IJUG) انجمن کاربران جاوا ایران",
   "home_btn": "خانه",
+  "home_programmer_day_celebration": "جشن روز برنامه نویس",
+  "home_ddd_workshop": "کارگاه DDD",
+  "home_15th_session_of_tehran_jug": "جلسه پانزدهم تهران جاگ",
+  "home_fourteenth_meeting_of_tehran_jug": "جلسه چهاردهم تهران جاگ",
+  "home_thirteenth_meeting_of_tehran_jug": "جلسه سیزدهم تهران جاگ",
+  "home_twelfth_meeting_of_tehran_jug": "جلسه دوازدهم تهران جاگ",
+  "home_11th_session_of_tehran_jug_on_engineer_day": "جلسه یازدهم تهران‌جاگ روز مهندس",
+  "home_welcome_to_iran_java_community": "به جامعه جاوا ایران خوش آمدید!",
+  "home_introduction_to_microprofile": "آشنایی با Microprofile",
+  "home_25th_anniversary_of_jcp": "25 سالگی JCP",
+  "home_celebrating_25_years_of_jcp_java_community_process": "جشن 25 سالگی JCP (Java Community Process)",
 
-  "blog_comingsoon":"به زودی ...",
+  "blog_comingsoon": "به زودی ...",
 
   "about_header": "درباره ما",
 
@@ -21,5 +35,21 @@
   "contact_name": "نام",
   "contact_email": "آدرس پستی",
   "contact_message": "پیغام",
-  "contact_button": "ارسال"
+  "contact_button": "ارسال",
+
+  "profile_email": "ایمیل",
+  "profile_mobileNumber": "شماره موبایل",
+  "profile_company": "شرکت",
+  "profile_position": "جایگاه شغلی",
+
+  "user_dashboard_user_information": "اطلاعات کاربر",
+  "user_dashboard_registered_events": "رویدادهای ثبت‌نام شده",
+  "user_dashboard_payments": "پرداخت ها",
+
+  "event_date": "تاریخ",
+  "event_location": "مکان",
+  "event_price": "قیمت",
+  "event_buy": "خرید",
+  "event_close": "بستن",
+  "event_toman": "تومان"
 }

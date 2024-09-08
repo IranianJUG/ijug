@@ -1,4 +1,3 @@
-<!-- pages/dashboard/index.vue -->
 <template>
   <div class="flex h-screen bg-gray-100">
     <!-- Sidebar -->
@@ -9,21 +8,21 @@
             <NuxtLink
               to="/user-dashboard/profile"
               class="block py-2.5 px-4 rounded transition duration-200 hover:bg-indigo-600 hover:text-white"
-              >اطلاعات کاربر</NuxtLink
+              >{{ $t("user_dashboard_user_information") }}</NuxtLink
             >
           </li>
           <li class="mb-4">
             <NuxtLink
               to="/user-dashboard/registered-events"
               class="block py-2.5 px-4 rounded transition duration-200 hover:bg-indigo-600 hover:text-white"
-              >رویدادهای ثبت‌نام شده</NuxtLink
+              >{{ $t("user_dashboard_registered_events") }}</NuxtLink
             >
           </li>
           <li class="mb-4">
             <NuxtLink
-              to="/user-dashboard/wallet"
+              to="/user-dashboard/payments"
               class="block py-2.5 px-4 rounded transition duration-200 hover:bg-indigo-600 hover:text-white"
-              >کیف پول</NuxtLink
+              >{{ $t("user_dashboard_payments") }}</NuxtLink
             >
           </li>
         </ul>
@@ -33,7 +32,6 @@
     <!-- Main Content -->
     <main class="flex-1 p-8">
       <NuxtPage />
-      <!-- رندر کردن محتوای صفحات -->
     </main>
   </div>
 </template>
