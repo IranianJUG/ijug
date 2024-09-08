@@ -4,6 +4,14 @@
       <h2 class="text-2xl font-bold mb-6 text-center text-gray-800">
         {{ isOtpMode ? "رمز یکبار مصرف" : "ثبت‌نام" }}
       </h2>
+
+      <p
+        v-if="!isOtpMode && showWarning"
+        class="text-red-600 mb-4 text-center shadow p-2 rounded"
+      >
+        *شماره موبایل و کد ملی باید مطابقت داشته باشند.
+      </p>
+
       <form v-if="!isOtpMode" @submit.prevent="register">
         <div class="mb-4 flex gap-4">
           <div class="w-1/2">
@@ -156,6 +164,10 @@ const nationalCode = ref("");
 const position = ref("");
 const otpCode = ref("");
 
+const showWarning = computed(() => {
+  return true;
+});
+
 async function register() {
   try {
     const register = await $fetch("https://api.awscloud.ir/api/user", {
@@ -174,7 +186,7 @@ async function register() {
     if (register.success) {
       isOtpMode.value = true;
     } else {
-      alert("ثبت نام ناموفق بود. لطفا دوباره تلاش کنید.");
+      alert("اطلاعات وارد شده تکراری است.");
     }
   } catch (error) {
     console.error("خطا در ثبت نام:", error);

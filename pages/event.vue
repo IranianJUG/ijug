@@ -6,7 +6,7 @@ import moment from "jalali-moment";
 moment.locale("ir");
 
 const events = ref([]);
-const blockedDates = ref([]);
+// const blockedDates = ref([]);
 const selectedEvent = ref(null);
 const isModalVisible = ref(false);
 const count = ref(1);
@@ -66,13 +66,8 @@ async function getAllEvents() {
       const allEvents = response.data.map((data: any) => {
         return {
           id: data.id,
-          startDateTime: moment(data.event_time)
-            .locale("fa")
-            .format("YYYY/MM/DD HH:mm"),
-          endDateTime: moment(data.event_time)
-            .add(3, "hours")
-            .locale("fa")
-            .format("YYYY/MM/DD HH:mm"),
+          startDateTime: moment(data.event_time).locale("fa"),
+          endDateTime: moment(data.event_time).add(3, "hours").locale("fa"),
           title: data.name,
           color: "#29B6F6",
           price: data.price,
@@ -81,9 +76,9 @@ async function getAllEvents() {
       });
 
       events.value = allEvents;
-      blockedDates.value = allEvents.map((event: any) =>
-        event.startDateTime.format("YYYY-MM-DD")
-      );
+      // blockedDates.value = allEvents.map((event: any) =>
+      //   event.startDateTime.format("YYYY-MM-DD")
+      // );
     } else {
       alert("دریافت اطلاعات رویدادها ناموفق بود. لطفا دوباره تلاش کنید.");
     }
@@ -100,9 +95,9 @@ onMounted(() => {
 
 <template>
   <div>
+    <!-- :disabledDates="blockedDates" -->
     <jalaliCalendar
       :eventsList="events"
-      :disabledDates="blockedDates"
       disablePastDays
       addEventButton
       @dayClick="showEventModal"

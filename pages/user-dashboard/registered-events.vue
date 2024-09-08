@@ -12,6 +12,7 @@
         v-for="ticket in tickets"
         :key="ticket.id"
         class="bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300 ease-in-out relative"
+        :id="'ticket-' + ticket.id"
       >
         <h2 class="text-2xl font-semibold text-indigo-700 mb-4">
           {{ ticket.name }}
@@ -45,7 +46,7 @@
         </div>
 
         <div
-          class="h-64 w-full rounded-lg overflow-hidden mb-4"
+          class="h-64 w-full rounded-lg overflow-hidden mb-4 hidden-for-pdf"
           :id="'map-' + ticket.id"
         ></div>
 
@@ -67,18 +68,19 @@
           <div v-html="ticket.description" class="text-gray-600 text-sm"></div>
         </div>
 
-        <!-- <button
-          class="absolute bottom-4 right-4 bg-indigo-600 text-white px-4 py-2 rounded-lg shadow hover:bg-indigo-700 transition-colors duration-300"
+        <button
+          @click="downloadTicketAsPdf(ticket.id)"
+          class="absolute bottom-4 right-4 bg-indigo-600 text-white px-4 py-2 rounded-lg shadow hover:bg-indigo-700 transition-colors duration-300 hidden-for-pdf"
         >
           دانلود بلیط
-        </button> -->
+        </button>
       </div>
     </div>
 
     <p v-else>در حال بارگذاری...</p>
 
     <!-- بخش اسپانسرها -->
-    <!-- <div class="mt-12">
+    <div class="mt-12">
       <h2 class="text-3xl font-bold mb-6 text-center text-gray-800">
         اسپانسرهای رویداد
       </h2>
@@ -86,31 +88,31 @@
         <div
           v-for="sponsor in sponsors"
           :key="sponsor.name"
-          class="text-center mb-6"
+          class="text-center mb-6 mx-11"
         >
           <img
             :src="sponsor.logo"
             :alt="sponsor.name"
-            class="w-24 h-24 mx-auto mb-2 rounded-full border-2 border-gray-200 shadow-md"
+            class="w-24 h-24 mx-auto mb-2 border-2 border-gray-200 shadow-md"
           />
           <p class="text-sm text-gray-600">{{ sponsor.name }}</p>
         </div>
       </div>
-    </div> -->
+    </div>
   </div>
 </template>
 
 <script setup>
 import { ref, onMounted } from "vue";
 import moment from "jalali-moment";
+import html2canvas from "html2canvas";
+import jsPDF from "jspdf";
 
-// چک کنید آیا کلاینت است
 const isClient = process.client;
 
 let L = null;
 
 if (isClient) {
-  // Leaflet را فقط در کلاینت ایمپورت کنید
   import("leaflet").then((leaflet) => {
     L = leaflet.default;
     import("leaflet/dist/leaflet.css");
@@ -125,9 +127,14 @@ const userInfo = myCookie.value;
 
 const tickets = ref([]);
 const sponsors = ref([
-  { name: "اسپانسر 1", logo: "/path-to-logo1.png" },
-  { name: "اسپانسر 2", logo: "/path-to-logo2.png" },
-  { name: "اسپانسر 3", logo: "/path-to-logo3.png" },
+  { name: "راهبرد هوشمند شهر ", logo: "/sponsorsLogo/R.H.SH.jpg" },
+  {
+    name: "داده پردازان ارتباط گستر ویونا",
+    logo: "/sponsorsLogo/VIUNA-ICT_LOGO.png",
+  },
+  { name: "پژوهشگاه دانش های بنیادی(ipm)", logo: "/sponsorsLogo/IPM-Logo.jpg" },
+  { name: "ایران نت", logo: "/sponsorsLogo/Iranet-Logo.jpg" },
+  { name: "irnic", logo: "/sponsorsLogo/irnic-logo.png" },
 ]);
 
 async function getAllTickets() {
@@ -148,13 +155,13 @@ async function getAllTickets() {
         eventTime: moment(data.event.event_time)
           .locale("fa")
           .format("YYYY/MM/DD HH:mm"),
-        count: data.count,
+        count: 1,
         description: data.event.description,
         mobile: data.mobile,
         fullName: `${data.first_name} ${data.last_name}`,
         locationLat: data.event.location_lat,
         locationLng: data.event.location_lng,
-        locationName: data.location_name,
+        locationName: data.event.location_name,
         locationAddress: data.event.location_address,
         email: data.email,
         name: data.event.name,
@@ -173,21 +180,56 @@ async function getAllTickets() {
 
 function loadMaps() {
   tickets.value.forEach((ticket) => {
-    const map = L.map(`map-${ticket.id}`).setView(
-      [ticket.locationLat, ticket.locationLng],
-      13
-    );
+    const lat = parseFloat(ticket.locationLat);
+    const lng = parseFloat(ticket.locationLng);
 
-    L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
-      attribution:
-        '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
-    }).addTo(map);
+    if (!isNaN(lat) && !isNaN(lng)) {
+      const map = L.map(`map-${ticket.id}`).setView([lat, lng], 13);
 
-    L.marker([ticket.locationLat, ticket.locationLng])
-      .addTo(map)
-      .bindPopup(ticket.locationName)
-      .openPopup();
+      L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
+        attribution:
+          '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+      }).addTo(map);
+
+      L.marker([lat, lng])
+        .addTo(map)
+        .bindPopup(ticket.locationName)
+        .openPopup();
+    } else {
+      console.error(
+        `مختصات نامعتبر برای بلیط ${ticket.id}: (${ticket.locationLat}, ${ticket.locationLng})`
+      );
+    }
   });
+}
+
+async function downloadTicketAsPdf(ticketId) {
+  const ticketElement = document.getElementById(`ticket-${ticketId}`);
+  if (ticketElement) {
+    try {
+      // تبدیل کارت بلیط به تصویر با html2canvas
+      const canvas = await html2canvas(ticketElement, {
+        scale: 2, // کیفیت بهتر
+        ignoreElements: (element) =>
+          element.classList.contains("hidden-for-pdf"),
+      });
+
+      // تبدیل تصویر به PDF با jsPDF
+      const imgData = canvas.toDataURL("image/png");
+      const pdf = new jsPDF({
+        orientation: "portrait",
+        unit: "pt",
+        format: [canvas.width, canvas.height],
+      });
+
+      pdf.addImage(imgData, "PNG", 0, 0, canvas.width, canvas.height);
+      pdf.save(`ticket-${ticketId}.pdf`);
+    } catch (error) {
+      console.error("خطا در ایجاد PDF:", error);
+    }
+  } else {
+    console.error("عنصر کارت بلیط پیدا نشد.");
+  }
 }
 
 onMounted(() => {

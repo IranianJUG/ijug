@@ -13,7 +13,9 @@
               <p class="text-gray-700">تاریخ: {{ transaction.createdAt }}</p>
               <p
                 :class="{
-                  'text-green-600': transaction.status === 0,
+                  'text-orange-600': transaction.status === 0,
+                  'text-green-600': transaction.status === 1,
+                  'text-red-600': transaction.status === 2,
                 }"
               >
                 نوع: واریز - مبلغ:

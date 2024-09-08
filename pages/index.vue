@@ -10,7 +10,7 @@ const userInfo = myCookie.value;
 const events = ref([
   {
     title: "home_programmer_day_celebration",
-    date: "چهارشنبه 21 مرداد ۱۴۰۳ ساعت ۱6:۰۰",
+    date: "چهارشنبه 21 شهریور ۱۴۰۳ ساعت ۱6:۰۰",
     icon: "pi pi-spin pi-cog",
     color: "#84031d",
     image: "https://miro.medium.com/v2/resize:fit:640/0*cLBaON1rB2fRsj8w.jpg",
