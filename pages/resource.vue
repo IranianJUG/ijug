@@ -3,16 +3,11 @@ import { ref, onMounted } from "vue";
 import type BookData from "@/interfaces/BookData";
 const layout = ref("grid");
 const options = ref(["list", "grid"]);
-//const bookData = ref();
 const bookImages: Array<object> = [
-  // Array of book images for the slideshow
   { image: "/images/Java_The_Complete_Reference.jpg" },
-
   { image: "/images/core_java.png" },
-  // Add more book images as needed
 ];
 const bookData: Array<BookData> = [
-  // Array of book details for the data view
   {
     name: "Java Complete Reference Twelfth Edition",
     image: "/images/Java_The_Complete_Reference.jpg",
@@ -139,7 +134,7 @@ const bookData: Array<BookData> = [
 
     <DataView dir="ltr" :value="bookData" :layout="layout">
       <template #header>
-        <div  class="flex justify-end">
+        <div class="flex justify-end">
           <SelectButton v-model="layout" :options="options" :allowEmpty="false">
             <template #option="{ option }">
               <i

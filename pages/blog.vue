@@ -10,7 +10,7 @@
     <h1
       class="mt-5 text-4xl font-bold text-indigo-600 drop-shadow-lg animate-pulse"
     >
-    {{ $t("blog_comingsoon") }}
+      {{ $t("blog_comingsoon") }}
     </h1>
   </div>
 </template>
