@@ -20,12 +20,12 @@
           />
         </div>
 
-        <button
+        <Button :loading="loading"
           type="submit"
           class="w-full bg-indigo-600 text-white py-2 px-4 rounded-md shadow-md hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500"
         >
           ورود
-        </button>
+        </Button>
       </form>
 
       <div v-if="isOtpMode">
@@ -36,12 +36,12 @@
           v-model="otpCode"
           class="w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500"
         />
-        <button
+        <Button :loading="loading"
           @click="verifyOtp"
           class="w-full mt-4 bg-indigo-600 text-white py-2 px-4 rounded-md shadow-md hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500"
         >
           تایید کد
-        </button>
+        </Button>
       </div>
     </div>
   </div>
@@ -55,22 +55,24 @@ const myCookie = useCookie(cookieName);
 const isOtpMode = ref(false);
 const mobileNumber = ref("");
 const otpCode = ref("");
-
+const loading = ref(false);
 async function login() {
   try {
+    loading.value = true;
     const login = await $fetch("https://api.awscloud.ir/api/auth/login", {
       method: "POST",
       body: {
         mobile: mobileNumber.value,
       },
     });
-
+    loading.value = false;
     if (login.success) {
       isOtpMode.value = true;
     } else {
       alert("ورود ناموفق بود. لطفا دوباره تلاش کنید.");
     }
   } catch (error) {
+    loading.value = false;
     console.error("خطا در ورود:", error);
     alert("خطایی رخ داده است. لطفا دوباره تلاش کنید.");
   }
@@ -78,6 +80,7 @@ async function login() {
 
 async function verifyOtp() {
   try {
+    loading.value = true;
     const response = await $fetch("https://api.awscloud.ir/api/auth/login", {
       method: "POST",
       body: {
@@ -85,7 +88,7 @@ async function verifyOtp() {
         otp: otpCode.value,
       },
     });
-
+    loading.value = false;
     if (response.success) {
       myCookie.value = response.data;
       reloadNuxtApp({
@@ -96,6 +99,7 @@ async function verifyOtp() {
       alert("ورود ناموفق بود. لطفا دوباره تلاش کنید.");
     }
   } catch (error) {
+    loading.value = false;
     console.error("خطا در ورود:", error);
     alert("خطایی رخ داده است. لطفا دوباره تلاش کنید.");
   }
