@@ -19,7 +19,7 @@
                 }"
               >
                 نوع: واریز - مبلغ:
-                {{ transaction.amount }} تومان
+                {{ transaction.amount }} ریال
               </p>
             </div>
           </li>
