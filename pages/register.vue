@@ -122,9 +122,10 @@
           </div>
         </div>
 
-        <Button :loading="loading"
+        <Button
+          :loading="loading"
           type="submit"
-          class="w-full bg-indigo-600 text-white py-2 px-4 rounded-md shadow-md hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500"
+          class="w-full bg-indigo-600 text-white py-2 px-4 rounded-md shadow-md hover:bg-indigo-700 justify-center focus:outline-none focus:ring-2 focus:ring-indigo-500"
         >
           ثبت ‌نام
         </Button>
@@ -138,9 +139,10 @@
           v-model="otpCode"
           class="w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500"
         />
-        <Button :loading="loading"
+        <Button
+          :loading="loading"
           @click="verifyOtp"
-          class="w-full mt-4 bg-indigo-600 text-white py-2 px-4 rounded-md shadow-md hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500"
+          class="w-full mt-4 bg-indigo-600 text-white py-2 px-4 rounded-md shadow-md hover:bg-indigo-700 justify-center focus:outline-none focus:ring-2 focus:ring-indigo-500"
         >
           تایید کد
         </Button>
@@ -233,5 +235,9 @@ async function verifyOtp() {
 
 .shadow-md-button {
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+#otpInput {
+  direction: ltr;
 }
 </style>

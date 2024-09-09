@@ -20,9 +20,10 @@
           />
         </div>
 
-        <Button :loading="loading"
+        <Button
+          :loading="loading"
           type="submit"
-          class="w-full bg-indigo-600 text-white py-2 px-4 rounded-md shadow-md hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500"
+          class="w-full bg-indigo-600 text-white py-2 px-4 rounded-md shadow-md hover:bg-indigo-700 justify-center focus:outline-none focus:ring-2 focus:ring-indigo-500"
         >
           ورود
         </Button>
@@ -36,9 +37,10 @@
           v-model="otpCode"
           class="w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500"
         />
-        <Button :loading="loading"
+        <Button
+          :loading="loading"
           @click="verifyOtp"
-          class="w-full mt-4 bg-indigo-600 text-white py-2 px-4 rounded-md shadow-md hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500"
+          class="w-full mt-4 bg-indigo-600 text-white py-2 px-4 rounded-md shadow-md hover:bg-indigo-700 justify-center focus:outline-none focus:ring-2 focus:ring-indigo-500"
         >
           تایید کد
         </Button>
@@ -56,6 +58,7 @@ const isOtpMode = ref(false);
 const mobileNumber = ref("");
 const otpCode = ref("");
 const loading = ref(false);
+
 async function login() {
   try {
     loading.value = true;
@@ -92,10 +95,10 @@ async function verifyOtp() {
     if (response.success) {
       myCookie.value = response.data;
       reloadNuxtApp({
-  force: true,
-  path: "/user-dashboard"
-})
-    }else {
+        force: true,
+        path: "/user-dashboard",
+      });
+    } else {
       alert("ورود ناموفق بود. لطفا دوباره تلاش کنید.");
     }
   } catch (error) {
@@ -113,5 +116,9 @@ async function verifyOtp() {
 
 .shadow-md-button {
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+#otpInput {
+  direction: ltr;
 }
 </style>
