@@ -1,9 +1,14 @@
 <template>
-  <div class="flex items-center justify-center min-h-100%">
-    <div class="w-full max-w-sm p-8 bg-white shadow-md rounded-lg">
-      <h2 class="text-2xl font-bold mb-6 text-center text-gray-800">
+  <div class="flex items-center justify-center px-4 sm:px-0">
+    <div
+      class="w-full max-w-xs sm:max-w-sm p-6 sm:p-8 bg-white shadow-md rounded-lg"
+    >
+      <h2
+        class="text-xl sm:text-2xl font-bold mb-4 sm:mb-6 text-center text-gray-800"
+      >
         {{ isOtpMode ? $t("login_one_time_password") : $t("login_login") }}
       </h2>
+
       <form v-if="!isOtpMode" @submit.prevent="login">
         <div class="mb-4">
           <label
@@ -30,19 +35,33 @@
       </form>
 
       <div v-if="isOtpMode">
-        <span>{{ $t("login_enter_your_one_time_password") }}</span>
-        <InputOtp v-model="otpCode" :length="6" style="gap: 0;direction:ltr">
+        <span class="block text-sm sm:text-base mb-4 text-gray-700">
+          {{ $t("login_enter_your_one_time_password") }}
+        </span>
+
+        <InputOtp
+          v-model="otpCode"
+          :length="6"
+          class="flex justify-center"
+          style="gap: 0; direction: ltr"
+        >
           <template #default="{ attrs, events, index }">
-            <input type="text" v-bind="attrs" v-on="events" class="custom-otp-input" />
-            <div v-if="index === 3" class="px-4">
+            <input
+              type="text"
+              v-bind="attrs"
+              v-on="events"
+              class="custom-otp-input"
+            />
+            <div v-if="index === 3" class="px-2 sm:px-4">
               <i class="pi pi-minus" />
             </div>
           </template>
         </InputOtp>
+
         <Button
           :loading="loading"
           @click="verifyOtp"
-          class="w-full mt-4 bg-indigo-600 text-white py-2 px-4 rounded-md shadow-md hover:bg-indigo-700 justify-center focus:outline-none focus:ring-2 focus:ring-indigo-500"
+          class="w-full mt-4 bg-indigo-600 text-white py-2 px-3 sm:px-4 rounded-md shadow-md hover:bg-indigo-700 justify-center focus:outline-none focus:ring-2 focus:ring-indigo-500"
         >
           {{ $t("login_confirm_code") }}
         </Button>
@@ -53,7 +72,7 @@
 
 <script setup>
 import { ref } from "vue";
-import InputOtp from 'primevue/inputotp';
+import InputOtp from "primevue/inputotp";
 const cookieName = "userInfo";
 const myCookie = useCookie(cookieName);
 const isOtpMode = ref(false);
@@ -116,22 +135,10 @@ async function verifyOtp() {
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.08);
 }
 
-.shadow-md-button {
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-}
-
-#otpInput {
-  direction: ltr;
-}
-
-.mobileNumberInput {
-  direction: ltr;
-}
-
 .custom-otp-input {
-  width: 48px;
-  height: 48px;
-  font-size: 24px;
+  width: 40px;
+  height: 40px;
+  font-size: 20px;
   appearance: none;
   text-align: center;
   transition: all 0.2s;
