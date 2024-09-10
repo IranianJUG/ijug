@@ -2,21 +2,21 @@
   <div class="flex items-center justify-center min-h-100%">
     <div class="w-full max-w-sm p-8 bg-white shadow-md rounded-lg">
       <h2 class="text-2xl font-bold mb-6 text-center text-gray-800">
-        {{ isOtpMode ? "رمز یکبار مصرف" : "ورود" }}
+        {{ isOtpMode ? $t("login_one_time_password") : $t("login_login") }}
       </h2>
       <form v-if="!isOtpMode" @submit.prevent="login">
         <div class="mb-4">
           <label
             for="mobileNumber"
             class="block text-gray-700 text-sm font-medium mb-2"
-            >شماره موبایل</label
+            >{{ $t("login_mobile_number") }}</label
           >
           <input
             type="mobileNumber"
-            id="lName"
+            id="mobileNumber"
             v-model="mobileNumber"
             required
-            class="w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500"
+            class="mobileNumberInput w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500"
           />
         </div>
 
@@ -25,12 +25,12 @@
           type="submit"
           class="w-full bg-indigo-600 text-white py-2 px-4 rounded-md shadow-md hover:bg-indigo-700 justify-center focus:outline-none focus:ring-2 focus:ring-indigo-500"
         >
-          ورود
+          {{ $t("login_login") }}
         </Button>
       </form>
 
       <div v-if="isOtpMode">
-        <span>رمز یکبار مصرف خود را وارد نمایید</span>
+        <span>{{ $t("login_enter_your_one_time_password") }}</span>
         <input
           type="number"
           id="otpInput"
@@ -42,7 +42,7 @@
           @click="verifyOtp"
           class="w-full mt-4 bg-indigo-600 text-white py-2 px-4 rounded-md shadow-md hover:bg-indigo-700 justify-center focus:outline-none focus:ring-2 focus:ring-indigo-500"
         >
-          تایید کد
+          {{ $t("login_confirm_code") }}
         </Button>
       </div>
     </div>
@@ -119,6 +119,10 @@ async function verifyOtp() {
 }
 
 #otpInput {
+  direction: ltr;
+}
+
+.mobileNumberInput {
   direction: ltr;
 }
 </style>

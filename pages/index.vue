@@ -5,6 +5,7 @@ import { EventStatus } from "~/interfaces/EventStatus";
 const isModalVisible = ref(false);
 const cookieName = "userInfo";
 const myCookie = useCookie(cookieName);
+const loading = ref(false);
 
 const userInfo = myCookie.value;
 const events = ref([
@@ -92,6 +93,7 @@ function setIcon(eventStatus: EventStatus): string {
 
 const handlePurchase = async () => {
   try {
+    loading.value = true;
     if (!!userInfo?.token) {
       const response = await $fetch(
         `https://api.awscloud.ir/api/smartis/event/11/1`,
@@ -102,20 +104,23 @@ const handlePurchase = async () => {
           },
         }
       );
-
+      loading.value = false;
       if (response.success) {
         isModalVisible.value = false;
         window.location.replace(
           "https://wallet.smartispay.app/" + response.data.payment_id
         );
-        // await router.push("/payment-success");
+      } else if (response.message) {
+        alert(response.message);
       } else {
         alert("خرید ناموفق بود. لطفا دوباره تلاش کنید.");
       }
     } else {
+      loading.value = false;
       alert("برای خرید بلیط رویداد ابتدا ثبت نام نمایید.");
     }
   } catch (error) {
+    loading.value = false;
     console.error("خطا در انجام خرید:", error);
   }
 };
@@ -188,23 +193,29 @@ const handlePurchase = async () => {
       </button>
       <h2 class="modal-title">همایش بزرگ برنامه نویسی</h2>
       <p class="modal-detail">
-        <strong>تاریخ:</strong>
+        <strong>{{ $t("event_date") }}:</strong>
         1403/06/21 16:00
       </p>
 
       <p class="modal-detail">
-        <strong>مکان:</strong> پژوهشگاه دانش های بنیادی (IPM)
+        <strong>{{ $t("event_location") }}:</strong> پژوهشگاه دانش های بنیادی (IPM)
       </p>
 
-      <p class="modal-detail price"><strong>قیمت:</strong> 100,000 تومان</p>
+      <p class="modal-detail price"><strong>{{ $t("event_price") }}:</strong> 100,000 {{ $t("event_toman") }}</p>
 
       <div class="modal-actions">
-        <button class="modal-purchase" @click="handlePurchase">خرید</button>
+        <Button
+          :loading="loading"
+          type="submit"
+          class="modal-purchase justify-center"
+          @click="handlePurchase"
+          >{{ $t("event_buy") }}</Button
+        >
         <button
           class="modal-close btn-outline-secondary"
           @click="isModalVisible = false"
         >
-          بستن
+        {{ $t("event_close") }}
         </button>
       </div>
     </div>

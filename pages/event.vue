@@ -10,6 +10,7 @@ const selectedEvent = ref(null);
 const isModalVisible = ref(false);
 const count = ref(1);
 const router = useRouter();
+const loading = ref(false);
 
 const cookieName = "userInfo";
 const myCookie = useCookie(cookieName);
@@ -27,6 +28,7 @@ const formatPrice = (price: number) => {
 
 const handlePurchase = async () => {
   try {
+    loading.value = true;
     if (!!userInfo?.token) {
       const response = await $fetch(
         `https://api.awscloud.ir/api/smartis/event/${selectedEvent.value.id}/${count.value}`,
@@ -37,20 +39,23 @@ const handlePurchase = async () => {
           },
         }
       );
-
+      loading.value = false;
       if (response.success) {
         isModalVisible.value = false;
         window.location.replace(
           "https://wallet.smartispay.app/" + response.data.payment_id
         );
-        // await router.push("/payment-success");
+      } else if (response.message) {
+        alert(response.message);
       } else {
         alert("خرید ناموفق بود. لطفا دوباره تلاش کنید.");
       }
     } else {
+      loading.value = false;
       alert("برای خرید بلیط رویداد ابتدا ثبت نام نمایید.");
     }
   } catch (error) {
+    loading.value = false;
     console.error("خطا در انجام خرید:", error);
   }
 };
@@ -106,25 +111,33 @@ onMounted(() => {
         </button>
         <h2 class="modal-title">{{ selectedEvent.title }}</h2>
         <p class="modal-detail">
-          <strong>تاریخ:</strong>
+          <strong>{{ $t("event_date") }}:</strong>
           {{ selectedEvent.startDateTime.format("YYYY-MM-DD HH:mm") }}
         </p>
 
         <p class="modal-detail">
-          <strong>مکان:</strong> {{ selectedEvent.location }}
+          <strong>{{ $t("event_location") }}:</strong>
+          {{ selectedEvent.location }}
         </p>
 
         <p class="modal-detail price">
-          <strong>قیمت:</strong> {{ formatPrice(selectedEvent.price) }} ریال
+          <strong>{{ $t("event_price") }}:</strong>
+          {{ formatPrice(selectedEvent.price) }} {{ $t("event_rial") }}
         </p>
 
         <div class="modal-actions">
-          <button class="modal-purchase" @click="handlePurchase">خرید</button>
+          <Button
+            :loading="loading"
+            type="submit"
+            class="modal-purchase justify-center"
+            @click="handlePurchase"
+            >{{ $t("event_buy") }}</Button
+          >
           <button
             class="modal-close btn-outline-secondary"
             @click="isModalVisible = false"
           >
-            بستن
+            {{ $t("event_close") }}
           </button>
         </div>
       </div>

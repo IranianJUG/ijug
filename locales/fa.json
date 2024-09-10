@@ -51,5 +51,25 @@
   "event_price": "قیمت",
   "event_buy": "خرید",
   "event_close": "بستن",
-  "event_toman": "تومان"
+  "event_toman": "تومان",
+  "event_rial": "ریال",
+
+  "login_login": "ورود",
+  "login_one_time_password": "رمز یکبار مصرف",
+  "login_mobile_number": "شماره موبایل",
+  "login_enter_your_one_time_password": "رمز یکبار مصرف خود را وارد نمایید",
+  "login_confirm_code": "تایید کد",
+
+  "register_register": "ثبت‌نام",
+  "register_one_time_password": "رمز یکبار مصرف",
+  "register_warning_message": "در نظر داشته باشید که کد ملی و شماره موبایل متعلق به یک شخص باشد",
+  "register_first_name": "نام",
+  "register_last_name": "نام خانوادگی",
+  "register_national_code": "کد ملی",
+  "register_mobile_number": "شماره موبایل",
+  "register_email": "ایمیل",
+  "register_job_position": "جایگاه شغلی",
+  "register_company": "شرکت",
+  "register_enter_your_one_time_password": "رمز یکبار مصرف خود را وارد نمایید",
+  "register_confirm_code": "تایید کد"
 }

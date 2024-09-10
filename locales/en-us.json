@@ -51,5 +51,25 @@
   "event_price": "Price",
   "event_buy": "Buy",
   "event_close": "Close",
-  "event_toman": "Toman"
+  "event_toman": "Toman",
+  "event_rial": "Rial",
+
+  "login_login": "Login",
+  "login_one_time_password": "One-time Password",
+  "login_mobile_number": "Mobile Number",
+  "login_enter_your_one_time_password": "Enter your one-time password",
+  "login_confirm_code": "Confirm Code",
+
+  "register_register": "Register",
+  "register_one_time_password": "One-time Password",
+  "register_warning_message": "Keep in mind that the national code and mobile number belong to the same person",
+  "register_first_name": "First Name",
+  "register_last_name": "Last Name",
+  "register_national_code": "National Code",
+  "register_mobile_number": "Mobile Number",
+  "register_email": "Email",
+  "register_job_position": "Job Position",
+  "register_company": "Company",
+  "register_enter_your_one_time_password": "Enter your one-time password",
+  "register_confirm_code": "Confirm Code"
 }
