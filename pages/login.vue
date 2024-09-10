@@ -31,13 +31,6 @@
 
       <div v-if="isOtpMode">
         <span>{{ $t("login_enter_your_one_time_password") }}</span>
-<!--        <input-->
-<!--          type="number"-->
-<!--          id="otpInput"-->
-<!--          v-model="otpCode"-->
-<!--          class="w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500"-->
-<!--        />-->
-
         <InputOtp v-model="otpCode" :length="6" style="gap: 0;direction:ltr">
           <template #default="{ attrs, events, index }">
             <input type="text" v-bind="attrs" v-on="events" class="custom-otp-input" />
@@ -168,6 +161,6 @@ async function verifyOtp() {
   border-bottom-right-radius: 12px;
   border-right-width: 1px;
   border-right-style: solid;
-  border-color: cbd5e1;
+  border-color: #cbd5e1;
 }
 </style>
