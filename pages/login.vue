@@ -31,12 +31,21 @@
 
       <div v-if="isOtpMode">
         <span>{{ $t("login_enter_your_one_time_password") }}</span>
-        <input
-          type="number"
-          id="otpInput"
-          v-model="otpCode"
-          class="w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500"
-        />
+<!--        <input-->
+<!--          type="number"-->
+<!--          id="otpInput"-->
+<!--          v-model="otpCode"-->
+<!--          class="w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500"-->
+<!--        />-->
+
+        <InputOtp v-model="otpCode" :length="6" style="gap: 0;direction:ltr">
+          <template #default="{ attrs, events, index }">
+            <input type="text" v-bind="attrs" v-on="events" class="custom-otp-input" />
+            <div v-if="index === 3" class="px-4">
+              <i class="pi pi-minus" />
+            </div>
+          </template>
+        </InputOtp>
         <Button
           :loading="loading"
           @click="verifyOtp"
@@ -51,7 +60,7 @@
 
 <script setup>
 import { ref } from "vue";
-
+import InputOtp from 'primevue/inputotp';
 const cookieName = "userInfo";
 const myCookie = useCookie(cookieName);
 const isOtpMode = ref(false);
@@ -124,5 +133,41 @@ async function verifyOtp() {
 
 .mobileNumberInput {
   direction: ltr;
+}
+
+.custom-otp-input {
+  width: 48px;
+  height: 48px;
+  font-size: 24px;
+  appearance: none;
+  text-align: center;
+  transition: all 0.2s;
+  border-radius: 0;
+  border: 1px solid #cbd5e1;
+  background: transparent;
+  outline-offset: -2px;
+  outline-color: transparent;
+  border-right: 0 none;
+  transition: outline-color 0.3s;
+  color: #334155;
+}
+
+.custom-otp-input:focus {
+  outline: 2px solid var(--p-focus-ring-color);
+}
+
+.custom-otp-input:first-child,
+.custom-otp-input:nth-child(5) {
+  border-top-left-radius: 12px;
+  border-bottom-left-radius: 12px;
+}
+
+.custom-otp-input:nth-child(3),
+.custom-otp-input:last-child {
+  border-top-right-radius: 12px;
+  border-bottom-right-radius: 12px;
+  border-right-width: 1px;
+  border-right-style: solid;
+  border-color: cbd5e1;
 }
 </style>
