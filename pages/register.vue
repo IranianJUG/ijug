@@ -2,14 +2,14 @@
   <div class="flex items-center justify-center min-h-100%">
     <div class="w-full max-w-sm p-8 bg-white shadow-md rounded-lg">
       <h2 class="text-2xl font-bold mb-6 text-center text-gray-800">
-        {{ isOtpMode ? "رمز یکبار مصرف" : "ثبت‌نام" }}
+        {{ isOtpMode ? $t("register_one_time_password") : $t("register_register") }}
       </h2>
 
       <p
         v-if="!isOtpMode && showWarning"
         class="text-yellow-600 mb-4 text-center shadow p-2 rounded"
       >
-        در نظر داشته باشید که کد ملی و شماره موبایل متعلق به یک شخص باشد
+        {{ $t("register_warning_message") }}
       </p>
 
       <form v-if="!isOtpMode" @submit.prevent="register">
@@ -18,7 +18,7 @@
             <label
               for="fName"
               class="block text-gray-700 text-sm font-medium mb-2"
-              >نام</label
+              >{{ $t("register_first_name") }}</label
             >
             <input
               type="text"
@@ -33,7 +33,7 @@
             <label
               for="lName"
               class="block text-gray-700 text-sm font-medium mb-2"
-              >نام خانوادگی</label
+              >{{ $t("register_last_name") }}</label
             >
             <input
               type="text"
@@ -50,14 +50,14 @@
             <label
               for="nationalCode"
               class="block text-gray-700 text-sm font-medium mb-2"
-              >کد ملی</label
+              >{{ $t("register_national_code") }}</label
             >
             <input
               type="text"
               id="nationalCode"
               v-model="nationalCode"
               required
-              class="w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500"
+              class="numberInput w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500"
             />
           </div>
 
@@ -65,14 +65,14 @@
             <label
               for="mobileNumber"
               class="block text-gray-700 text-sm font-medium mb-2"
-              >شماره موبایل</label
+              >{{ $t("register_mobile_number") }}</label
             >
             <input
               type="text"
               id="mobileNumber"
               v-model="mobileNumber"
               required
-              class="w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500"
+              class="numberInput w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500"
             />
           </div>
         </div>
@@ -81,14 +81,14 @@
           <label
             for="email"
             class="block text-gray-700 text-sm font-medium mb-2"
-            >ایمیل</label
+            >{{ $t("register_email") }}</label
           >
           <input
             type="email"
             id="email"
             v-model="email"
             required
-            class="w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500"
+            class="emailInput w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500"
           />
         </div>
 
@@ -97,7 +97,7 @@
             <label
               for="position"
               class="block text-gray-700 text-sm font-medium mb-2"
-              >جایگاه شغلی</label
+              >{{ $t("register_job_position") }}</label
             >
             <input
               type="text"
@@ -111,7 +111,7 @@
             <label
               for="company"
               class="block text-gray-700 text-sm font-medium mb-2"
-              >شرکت</label
+              >{{ $t("register_company") }}</label
             >
             <input
               type="text"
@@ -127,12 +127,12 @@
           type="submit"
           class="w-full bg-indigo-600 text-white py-2 px-4 rounded-md shadow-md hover:bg-indigo-700 justify-center focus:outline-none focus:ring-2 focus:ring-indigo-500"
         >
-          ثبت ‌نام
+          {{ $t("register_register") }}
         </Button>
       </form>
 
       <div v-if="isOtpMode">
-        <span>رمز یکبار مصرف خود را وارد نمایید</span>
+        <span>{{ $t("register_enter_your_one_time_password") }}</span>
         <input
           type="number"
           id="otpInput"
@@ -144,7 +144,7 @@
           @click="verifyOtp"
           class="w-full mt-4 bg-indigo-600 text-white py-2 px-4 rounded-md shadow-md hover:bg-indigo-700 justify-center focus:outline-none focus:ring-2 focus:ring-indigo-500"
         >
-          تایید کد
+          {{ $t("register_confirm_code") }}
         </Button>
       </div>
     </div>
@@ -238,6 +238,14 @@ async function verifyOtp() {
 }
 
 #otpInput {
+  direction: ltr;
+}
+
+.numberInput {
+  direction: ltr;
+}
+
+.emailInput {
   direction: ltr;
 }
 </style>

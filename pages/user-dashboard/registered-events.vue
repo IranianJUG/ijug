@@ -77,7 +77,7 @@
       </div>
     </div>
 
-    <p v-else>در حال بارگذاری...</p>
+    <p v-else>در حال حاضر هیچ بلیطی دریافت نکرده اید.</p>
 
     <div class="mt-12">
       <h2 class="text-3xl font-bold mb-6 text-center text-gray-800">
