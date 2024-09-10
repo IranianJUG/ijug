@@ -13,7 +13,7 @@ const events = ref([
     date: "چهارشنبه 21 شهریور ۱۴۰۳ ساعت ۱6:۰۰",
     icon: "pi pi-spin pi-cog",
     color: "#84031d",
-    image: "https://miro.medium.com/v2/resize:fit:640/0*cLBaON1rB2fRsj8w.jpg",
+    image: "/images/ijug-event.jpg",
     description: "home_programmer_day_celebration",
     clickable: true,
   },
