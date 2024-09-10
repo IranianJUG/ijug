@@ -318,8 +318,8 @@ const handlePurchase = async () => {
 }
 
 .modal-close:hover {
-  background-color: #6c757d; /* پس‌زمینه پر رنگ برای hover */
-  color: white; /* تغییر رنگ متن به سفید در حالت hover */
+  background-color: #6c757d;
+  color: white;
 }
 
 .modal-purchase:hover {

@@ -1,8 +1,14 @@
 <template>
-  <div class="flex items-center justify-center min-h-100%">
-    <div class="w-full max-w-sm p-8 bg-white shadow-md rounded-lg">
-      <h2 class="text-2xl font-bold mb-6 text-center text-gray-800">
-        {{ isOtpMode ? $t("register_one_time_password") : $t("register_register") }}
+  <div class="flex items-center justify-center px-4 sm:px-0">
+    <div
+      class="w-full max-w-xs sm:max-w-sm p-6 sm:p-8 bg-white shadow-md rounded-lg"
+    >
+      <h2
+        class="text-xl sm:text-2xl font-bold mb-4 sm:mb-6 text-center text-gray-800"
+      >
+        {{
+          isOtpMode ? $t("register_one_time_password") : $t("register_register")
+        }}
       </h2>
 
       <p
@@ -132,15 +138,29 @@
       </form>
 
       <div v-if="isOtpMode">
-        <span>{{ $t("register_enter_your_one_time_password") }}</span>
-        <InputOtp v-model="otpCode" :length="6" style="gap: 0;direction:ltr">
+        <span class="block text-sm sm:text-base mb-4 text-gray-700">
+          {{ $t("register_enter_your_one_time_password") }}
+        </span>
+
+        <InputOtp
+          v-model="otpCode"
+          :length="6"
+          style="gap: 0; direction: ltr"
+          class="flex justify-center"
+        >
           <template #default="{ attrs, events, index }">
-            <input type="text" v-bind="attrs" v-on="events" class="custom-otp-input" />
-            <div v-if="index === 3" class="px-4">
+            <input
+              type="text"
+              v-bind="attrs"
+              v-on="events"
+              class="custom-otp-input"
+            />
+            <div v-if="index === 3" class="px-2 sm:px-4">
               <i class="pi pi-minus" />
             </div>
           </template>
         </InputOtp>
+
         <Button
           :loading="loading"
           @click="verifyOtp"
@@ -240,24 +260,16 @@ async function verifyOtp() {
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
-#otpInput {
-  direction: ltr;
-}
-
-.numberInput {
-  direction: ltr;
-}
-
+#otpInput,
+.numberInput,
 .emailInput {
   direction: ltr;
 }
 
-
-
 .custom-otp-input {
-  width: 48px;
-  height: 48px;
-  font-size: 24px;
+  width: 40px;
+  height: 40px;
+  font-size: 20px;
   appearance: none;
   text-align: center;
   transition: all 0.2s;
@@ -287,6 +299,6 @@ async function verifyOtp() {
   border-bottom-right-radius: 12px;
   border-right-width: 1px;
   border-right-style: solid;
-  border-color: cbd5e1;
+  border-color: #cbd5e1;
 }
 </style>
