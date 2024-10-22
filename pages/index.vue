@@ -14,6 +14,7 @@ const events = ref([
     date: "پنجشنبه 3 آبان 1403 ساعت 10:00 - 13:00",
     icon: "pi pi-spin pi-cog",
     color: "#84031d",
+    eventId: 12,
     image: "/images/quarkus.png",
     description: "home_integration_quarkus_and_kafka_event",
     clickable: true,
@@ -100,12 +101,12 @@ function setIcon(eventStatus: EventStatus): string {
   return "pi pi-spin pi-ban";
 }
 
-const handlePurchase = async () => {
+const handlePurchase = async (eventID) => {
   try {
     loading.value = true;
     if (!!userInfo?.token) {
       const response = await $fetch(
-        `https://api.awscloud.ir/api/smartis/event/11/1`,
+        `https://api.awscloud.ir/api/smartis/event/${eventID}/1`,
         {
           method: "GET",
           headers: {
@@ -221,9 +222,8 @@ const handlePurchase = async () => {
           :loading="loading"
           type="submit"
           class="modal-purchase justify-center"
-          @click="handlePurchase"
-          >{{ $t("event_buy") }}</Button
-        >
+          @click="handlePurchase(12)"
+          >{{ $t("event_buy") }}</Button>
         <button
           class="modal-close btn-outline-secondary"
           @click="isModalVisible = false"
