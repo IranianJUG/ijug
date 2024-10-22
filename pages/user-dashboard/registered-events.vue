@@ -79,7 +79,7 @@
 
     <p v-else>در حال حاضر هیچ بلیطی دریافت نکرده اید.</p>
 
-    <div class="mt-12">
+    <!-- <div class="mt-12">
       <h2 class="text-3xl font-bold mb-6 text-center text-gray-800">
         اسپانسرهای رویداد
       </h2>
@@ -99,7 +99,7 @@
           <p class="text-sm text-gray-600">{{ sponsor.name }}</p>
         </div>
       </div>
-    </div>
+    </div> -->
   </div>
 </template>
 
@@ -127,16 +127,16 @@ const myCookie = useCookie(cookieName);
 const userInfo = myCookie.value;
 
 const tickets = ref([]);
-const sponsors = ref([
-  { name: "راهبرد هوشمند شهر ", logo: "/sponsorsLogo/R.H.SH.jpg" },
-  {
-    name: "داده پردازان ارتباط گستر ویونا",
-    logo: "/sponsorsLogo/VIUNA-ICT_LOGO.png",
-  },
-  { name: "پژوهشگاه دانش های بنیادی(ipm)", logo: "/sponsorsLogo/IPM-Logo.jpg" },
-  { name: "ایران نت", logo: "/sponsorsLogo/Iranet-Logo.jpg" },
-  { name: "irnic", logo: "/sponsorsLogo/irnic-logo.png" },
-]);
+//const sponsors = ref([
+//  { name: "راهبرد هوشمند شهر ", logo: "/sponsorsLogo/R.H.SH.jpg" },
+//  {
+//    name: "داده پردازان ارتباط گستر ویونا",
+//    logo: "/sponsorsLogo/VIUNA-ICT_LOGO.png",
+//  },
+//  { name: "پژوهشگاه دانش های بنیادی(ipm)", logo: "/sponsorsLogo/IPM-Logo.jpg" },
+//  { name: "ایران نت", logo: "/sponsorsLogo/Iranet-Logo.jpg" },
+//  { name: "irnic", logo: "/sponsorsLogo/irnic-logo.png" },
+//]);
 
 async function getAllTickets() {
   try {
