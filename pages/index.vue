@@ -10,13 +10,22 @@ const loading = ref(false);
 const userInfo = myCookie.value;
 const events = ref([
   {
-    title: "home_programmer_day_celebration",
-    date: "چهارشنبه 21 شهریور ۱۴۰۳ ساعت ۱6:۰۰",
+    title: "home_16th_tehran_jug_event",
+    date: "پنجشنبه 3 آبان 1403 ساعت 10:00 - 13:00",
     icon: "pi pi-spin pi-cog",
     color: "#84031d",
+    image: "/images/quarkus.png",
+    description: "home_integration_quarkus_and_kafka_event",
+    clickable: true,
+  },
+  {
+    title: "home_programmer_day_celebration",
+    date: "چهارشنبه 21 شهریور ۱۴۰۳ ساعت ۱6:۰۰",
+    icon: "pi pi-check-circle",
+    color: "#3cb01b",
     image: "/images/ijug-event.jpg",
     description: "home_programmer_day_celebration",
-    clickable: true,
+    clickable: false,
   },
   {
     title: "home_15th_session_of_tehran_jug",
@@ -191,17 +200,21 @@ const handlePurchase = async () => {
       <button class="modal-close-icon" @click="isModalVisible = false">
         &times;
       </button>
-      <h2 class="modal-title">همایش بزرگ برنامه نویسی</h2>
+      <h2 class="modal-title">شانزدهمین رویداد تهران جاگ</h2>
       <p class="modal-detail">
         <strong>{{ $t("event_date") }}:</strong>
-        1403/06/21 16:00
+        1403/08/03 10:00
       </p>
 
       <p class="modal-detail">
-        <strong>{{ $t("event_location") }}:</strong> پژوهشگاه دانش های بنیادی (IPM)
+        <strong>{{ $t("event_location") }}:</strong>خ اسکندری شمالی، ساختمان قرض
+        الحسنه سخاوت امام جواد (ع)
       </p>
 
-      <p class="modal-detail price"><strong>{{ $t("event_price") }}:</strong> 100,000 {{ $t("event_toman") }}</p>
+      <p class="modal-detail price">
+        <strong>{{ $t("event_price") }}:</strong> 50,000
+        {{ $t("event_toman") }}
+      </p>
 
       <div class="modal-actions">
         <Button
@@ -215,7 +228,7 @@ const handlePurchase = async () => {
           class="modal-close btn-outline-secondary"
           @click="isModalVisible = false"
         >
-        {{ $t("event_close") }}
+          {{ $t("event_close") }}
         </button>
       </div>
     </div>
