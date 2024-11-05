@@ -62,7 +62,6 @@
               type="text"
               id="nationalCode"
               v-model="nationalCode"
-              required
               class="numberInput w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500"
             />
           </div>
@@ -205,7 +204,7 @@ async function register() {
         last_name: lName.value,
         mobile: mobileNumber.value,
         email: email.value,
-        national_code: nationalCode.value,
+        national_code: nationalCode.value ?? nationalCode.value,
         position: position.value ?? position.value,
         company: company.value ?? company.value,
       },
