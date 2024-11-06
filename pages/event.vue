@@ -42,9 +42,13 @@ const handlePurchase = async () => {
       loading.value = false;
       if (response.success) {
         isModalVisible.value = false;
-        window.location.replace(
-          "https://wallet.smartispay.app/" + response.data.payment_id
-        );
+        if(response.pay_status ==false){
+          window.location.replace(
+              "https://wallet.smartispay.app/" + response.data.payment_id
+          );
+        }else {
+          alert("خرید با موفقیت انجام شد.");
+        }
       } else if (response.message) {
         alert(response.message);
       } else {
