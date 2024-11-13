@@ -10,14 +10,24 @@ const loading = ref(false);
 const userInfo = myCookie.value;
 const events = ref([
   {
-    title: "home_16th_tehran_jug_event",
-    date: "پنجشنبه 3 آبان 1403 ساعت 10:00 - 13:00",
+    title: "home_17th_tehran_jug_event",
+    date: "پنجشنبه 1 آذر 1403 ساعت 10:00 - 13:00",
     icon: "pi pi-spin pi-cog",
     color: "#84031d",
+    eventId: 15,
+    image: "/images/17thTehranJugEvent.jpg",
+    description: "home_java23",
+    clickable: true,
+  },
+  {
+    title: "home_16th_tehran_jug_event",
+    date: "پنجشنبه 3 آبان 1403 ساعت 10:00 - 13:00",
+    icon: "pi pi-check-circle",
+    color: "#3cb01b",
     eventId: 12,
     image: "/images/quarkus.png",
     description: "home_integration_quarkus_and_kafka_event",
-    clickable: true,
+    clickable: false,
   },
   {
     title: "home_programmer_day_celebration",
@@ -117,11 +127,11 @@ const handlePurchase = async (eventID) => {
       loading.value = false;
       if (response.success) {
         isModalVisible.value = false;
-        if(response.pay_status ==false){
+        if (response.pay_status == false) {
           window.location.replace(
-              "https://wallet.smartispay.app/" + response.data.payment_id
+            "https://wallet.smartispay.app/" + response.data.payment_id
           );
-        }else {
+        } else {
           alert("خرید با موفقیت انجام شد.");
         }
       } else if (response.message) {
@@ -205,19 +215,19 @@ const handlePurchase = async (eventID) => {
       <button class="modal-close-icon" @click="isModalVisible = false">
         &times;
       </button>
-      <h2 class="modal-title">شانزدهمین رویداد تهران جاگ</h2>
+      <h2 class="modal-title">هفدهمین رویداد تهران جاگ</h2>
       <p class="modal-detail">
         <strong>{{ $t("event_date") }}:</strong>
-        1403/08/03 10:00
+        1403/09/01 10:00 - 13:00
       </p>
 
       <p class="modal-detail">
-        <strong>{{ $t("event_location") }}:</strong>خ اسکندری شمالی، ساختمان قرض
-        الحسنه سخاوت امام جواد (ع)
+        <strong>{{ $t("event_location") }}:</strong> خیابان ولیعصر ـ خیابان
+        ناهید غربی ـ پلاک 70 ـ ساختمان فناوری اطلاعات بانک شهر
       </p>
 
       <p class="modal-detail price">
-        <strong>{{ $t("event_price") }}:</strong> 50,000
+        <strong>{{ $t("event_price") }}:</strong> 0
         {{ $t("event_toman") }}
       </p>
 
@@ -227,7 +237,8 @@ const handlePurchase = async (eventID) => {
           type="submit"
           class="modal-purchase justify-center"
           @click="handlePurchase(12)"
-          >{{ $t("event_buy") }}</Button>
+          >{{ $t("event_buy") }}</Button
+        >
         <button
           class="modal-close btn-outline-secondary"
           @click="isModalVisible = false"
