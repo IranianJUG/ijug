@@ -206,7 +206,6 @@ const handlePurchase = async (eventID) => {
         </Card>
       </template>
     </Timeline>
-
     <ScrollToTop />
   </div>
 
@@ -236,7 +235,7 @@ const handlePurchase = async (eventID) => {
           :loading="loading"
           type="submit"
           class="modal-purchase justify-center"
-          @click="handlePurchase(12)"
+          @click="handlePurchase(15)"
           >{{ $t("event_buy") }}</Button
         >
         <button
